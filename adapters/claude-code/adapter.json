@@ -1,0 +1,9 @@
+{
+  "host": "claude-code",
+  "displayName": "Claude Code",
+  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
+  "skills": { "mode": "plugin", "path": "skills" },
+  "instructions": { "file": "CLAUDE.md", "requiresBackup": true },
+  "superpowers": { "required": true, "install": "/plugin install superpowers@claude-plugins-official" },
+  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "instructions-backup"]
+}

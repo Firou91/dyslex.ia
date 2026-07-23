@@ -1,0 +1,9 @@
+{
+  "host": "codex-cli",
+  "displayName": "Codex CLI",
+  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
+  "skills": { "mode": "plugin", "path": "skills" },
+  "instructions": { "file": "AGENTS.md", "requiresBackup": true },
+  "superpowers": { "required": true, "install": "Open /plugins, search for Superpowers, then install it." },
+  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "codex-home"]
+}

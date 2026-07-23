@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Explainer"
+  short_description: "Explain code in useful layers"
+  default_prompt: "Use $code-explainer to explain this code by overview, flow, inputs, outputs, and risks."

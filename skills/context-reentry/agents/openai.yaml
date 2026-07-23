@@ -1,0 +1,4 @@
+interface:
+  display_name: "Context Reentry"
+  short_description: "Resume interrupted work clearly"
+  default_prompt: "Use $context-reentry to summarize where we are and identify the next single action."

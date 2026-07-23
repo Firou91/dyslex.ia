@@ -1,0 +1,9 @@
+{
+  "host": "cursor",
+  "displayName": "Cursor",
+  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
+  "skills": { "mode": "plugin", "path": "skills" },
+  "instructions": { "plugin": ".cursor-plugin", "requiresBackup": true },
+  "superpowers": { "required": true, "install": "/add-plugin superpowers" },
+  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "cursor-plugin-manifest"]
+}

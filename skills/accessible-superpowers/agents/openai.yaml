@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessible Superpowers"
+  short_description: "Adapt Superpowers accessibly"
+  default_prompt: "Use $accessible-superpowers to present the active Superpowers workflow in an accessible structure."

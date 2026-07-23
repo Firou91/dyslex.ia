@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instruction Decoder"
+  short_description: "Decode complex instructions"
+  default_prompt: "Use $instruction-decoder to turn this instruction into clear constraints, steps, and success criteria."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Clarifier"
+  short_description: "Find material prompt ambiguities"
+  default_prompt: "Use $prompt-clarifier to identify only ambiguities that materially change the result."

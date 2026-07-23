@@ -1,0 +1,4 @@
+interface:
+  display_name: "Terminal Output Reader"
+  short_description: "Summarize terminal output safely"
+  default_prompt: "Use $terminal-output-reader to summarize this terminal output and preserve the first useful error."

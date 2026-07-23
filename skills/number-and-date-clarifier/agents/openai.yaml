@@ -1,0 +1,4 @@
+interface:
+  display_name: "Number Date Clarifier"
+  short_description: "Clarify numbers, dates, units"
+  default_prompt: "Use $number-and-date-clarifier to clarify ambiguous dates, units, versions, numbers, and ranges."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Error Decoder"
+  short_description: "Explain errors without guessing"
+  default_prompt: "Use $error-decoder to explain this error, preserve the original, and separate facts from hypotheses."

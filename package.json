@@ -1,0 +1,41 @@
+{
+  "name": "dyslex.ia",
+  "version": "0.1.0",
+  "description": "Accessibility layer for AI agents, built as MCP server and Agent Skills collection on top of Superpowers.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "bin": {
+    "dyslexia": "./dist/src/cli/index.js",
+    "dyslex.ia": "./dist/src/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "adapters",
+    "docs",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "doctor": "node dist/cli/index.js doctor"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "env-paths": "^3.0.0",
+    "semver": "^7.7.2",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.24.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/semver": "^7.7.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Identifier Safety"
+  short_description: "Protect technical identifiers"
+  default_prompt: "Use $identifier-safety to rewrite this text while preserving every technical identifier exactly."

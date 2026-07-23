@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spelling And Writing Support"
+  short_description: "Correct or rewrite while preserving meaning"
+  default_prompt: "Use $spelling-and-writing-support to correct this text without changing my tone."

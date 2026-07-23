@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decision Comparator"
+  short_description: "Compare options consistently"
+  default_prompt: "Use $decision-comparator to compare these options with clear criteria and a recommendation."

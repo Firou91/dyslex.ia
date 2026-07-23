@@ -1,0 +1,9 @@
+{
+  "host": "antigravity",
+  "displayName": "Antigravity",
+  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
+  "skills": { "mode": "plugin", "path": "skills" },
+  "instructions": { "hook": "session-start", "requiresBackup": true },
+  "superpowers": { "required": true, "install": "agy plugin install https://github.com/obra/superpowers" },
+  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "session-start-hook"]
+}

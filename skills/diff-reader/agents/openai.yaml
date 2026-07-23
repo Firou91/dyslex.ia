@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diff Reader"
+  short_description: "Explain Git diffs clearly"
+  default_prompt: "Use $diff-reader to explain this diff by additions, removals, functional change, risks, and tests."

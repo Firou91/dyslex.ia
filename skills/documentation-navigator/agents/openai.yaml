@@ -1,0 +1,4 @@
+interface:
+  display_name: "Documentation Navigator"
+  short_description: "Navigate long documentation"
+  default_prompt: "Use $documentation-navigator to find the relevant documentation sections and explain the reading path."

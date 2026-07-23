@@ -1,0 +1,9 @@
+{
+  "host": "pi",
+  "displayName": "Pi",
+  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
+  "skills": { "mode": "package", "path": "skills" },
+  "instructions": { "package": ".pi", "requiresBackup": true },
+  "superpowers": { "required": true, "install": "pi install git:github.com/obra/superpowers" },
+  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "pi-package"]
+}

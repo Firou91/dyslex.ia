@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Sequencer"
+  short_description: "Break work into ordered checked tasks"
+  default_prompt: "Use $task-sequencer to break this objective into small verified steps."

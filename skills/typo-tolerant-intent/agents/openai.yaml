@@ -1,0 +1,4 @@
+interface:
+  display_name: "Typo Tolerant Intent"
+  short_description: "Infer intent from typo-heavy requests"
+  default_prompt: "Use $typo-tolerant-intent to infer the likely request while preserving technical tokens."

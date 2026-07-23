@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessible Response"
+  short_description: "Improve response readability"
+  default_prompt: "Use $accessible-response to make this response easier to read without losing technical detail."
