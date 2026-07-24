@@ -2,7 +2,6 @@
 import { readFile } from "node:fs/promises";
 import { runDoctor } from "./doctor.js";
 import { installHost } from "./install.js";
-import { startStdioServer } from "../server/mcp.js";
 import { parseProfileName, setActiveProfile, loadConfig, saveUserConfig } from "../profiles/config.js";
 import { resolveSuperpowersDependency } from "../dependency/superpowers.js";
 import { HOSTS } from "../hosts/catalog.js";
@@ -15,12 +14,7 @@ function print(value: unknown): void {
 async function main(argv: string[]): Promise<void> {
   const [command, subcommand, ...rest] = argv;
   if (!command || command === "help" || command === "--help") {
-    print("Usage: dyslexai <doctor|dependency|compatibility|config|profile|install|uninstall|update|mcp>");
-    return;
-  }
-
-  if (command === "mcp" || command === "server") {
-    await startStdioServer();
+    print("Usage: dyslexai <doctor|dependency|compatibility|config|profile|install|uninstall|update>");
     return;
   }
 
@@ -67,7 +61,7 @@ async function main(argv: string[]): Promise<void> {
   }
 
   if (command === "uninstall") {
-    print({ ok: true, dryRun: true, message: "Remove the plugin install plan and optional compatibility bridge entry for the selected host after backing up user files." });
+    print({ ok: true, dryRun: true, message: "Remove the plugin install plan for the selected host after backing up user files." });
     return;
   }
 

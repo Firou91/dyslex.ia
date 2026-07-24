@@ -7,7 +7,7 @@ Test environment used:
 - Working model for this account during validation: `gpt-5.6-sol`.
 - Config path: `C:\Users\firou\.codex\config.toml`.
 
-## Plugin-First Test
+## Plugin Test
 
 Codex plugin validation is the primary test path.
 
@@ -18,82 +18,43 @@ Expected result:
 - Codex lists `dyslex.ai` in `/plugins` after plugin installation;
 - a new Codex chat can invoke the accessibility skills from an ambiguous prompt.
 
-## Compatibility Bridge Configuration Safety
+## Local E2E
 
-Tests must not leave compatibility bridge servers in the user's Codex config.
+Use a disposable project and marketplace root:
 
-Use one of these approaches:
-
-- automated tests with temporary `CODEX_HOME`;
-- manual tests with a backup of `config.toml`, followed by restore.
-
-The test server name is:
-
-```text
-dyslex-ai-local-test
+```bash
+codex plugin marketplace add <path-to-local-marketplace-root>
+codex plugin add dyslex-ai@<marketplace-name>
+codex plugin list
 ```
 
-## Negative Test
+Then start a new Codex chat and check:
+
+```text
+/plugins
+```
+
+Expected result:
+
+- `dyslex.ai` appears as installed;
+- the 16 skills are visible or callable;
+- ambiguous prompts trigger clarification before implementation.
+
+## Dependency Test
 
 Command:
 
 ```bash
-node dist/src/cli/index.js mcp
+npx -y @firou91/dyslex.ai doctor --verbose
 ```
 
-Expected result:
+Expected result with Superpowers installed:
 
-- exit code `1`;
-- empty `stdout`;
-- actionable error on `stderr`;
-- no MCP `initialize` success;
-- no tools, resources, or prompts announced.
+- `superpowers.ok` is `true`;
+- `compatibility` is `compatible`.
 
-Codex required-server test:
+Expected result without Superpowers:
 
-```bash
-codex mcp add dyslex-ai-local-test -- node A:\Workspace\.agents\skills\dyslex.ai\dist\src\cli\index.js mcp
-```
-
-Then set `required = true` for the server in a backed-up config.
-
-Expected result:
-
-- Codex reports `required MCP servers failed to initialize`.
-
-## Positive Test
-
-Use an external Superpowers installation or a minimal test fixture only for automated protocol tests:
-
-```bash
-codex mcp add dyslex-ai-local-test --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- node A:\Workspace\.agents\skills\dyslex.ai\dist\src\cli\index.js mcp
-```
-
-Expected result:
-
-- `codex mcp list` shows the server as enabled;
-- `dyslexai doctor --verbose` reports `superpowers.ok: true`;
-- MCP SDK integration tests can list tools, resources, and prompts.
-
-If Codex authentication is expired, `codex exec` can still prove whether MCP initialization failed or succeeded:
-
-- MCP failure appears as `required MCP servers failed to initialize`;
-- auth failure appears as `token_expired` after thread/session startup.
-
-## Real Tool Call
-
-The validated end-to-end command used the corrected MCP registration above and a real external Superpowers clone.
-
-Command:
-
-```bash
-codex exec --skip-git-repo-check -m gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox "Appelle ces tools MCP dyslex-ai-local-test dans cet ordre: dyslexai_profile_get avec {}, dyslexai_check_ambiguity avec {text:'07/08/2026 1.500 10m'}, puis dyslexai_rewrite avec {text:'fo modif le src/tools/handlers.ts avec --preserveTechnicalTokens et @modelcontextprotocol/sdk', mode:'readable', preserveTechnicalTokens:true}. Réponds en 3 lignes: profile=<nom>, ambiguity=<nombre>, tokens-preserved=<yes/no>."
-```
-
-Expected result:
-
-```text
-profile=balanced
-ambiguity=3
-tokens-preserved=yes
-```
+- `superpowers.ok` is `false`;
+- `compatibility` is `blocked`;
+- skills should ask the user to install Superpowers before continuing.

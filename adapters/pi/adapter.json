@@ -23,17 +23,6 @@
     "superpowers",
     "skills-catalog",
     "plugin-install",
-    "pi-package",
-    "compatibility-bridge-optional"
-  ],
-  "compatibilityBridge": {
-    "optional": true,
-    "protocol": "mcp",
-    "transport": "stdio",
-    "command": "dyslexai",
-    "args": [
-      "mcp"
-    ],
-    "note": "Use only for hosts or workflows that cannot consume the skills plugin directly."
-  }
+    "pi-package"
+  ]
 }

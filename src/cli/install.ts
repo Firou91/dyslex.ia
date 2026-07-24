@@ -30,14 +30,6 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
           manifest: host.plugin.manifest,
           skillsPath: "skills"
         },
-        compatibilityBridge: {
-          optional: true,
-          protocol: "mcp",
-          command: "dyslexai",
-          args: ["mcp"],
-          transport: "stdio",
-          note: "Use only for hosts or workflows that cannot consume the skills plugin directly."
-        },
         skillsPath: "skills",
         dependency: {
           superpowersPath: dependency.path,
@@ -46,8 +38,7 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
         safety: {
           requiresBackupBeforeUserFileEdits: true,
           idempotent: true,
-          uninstallSupported: true,
-          compatibilityBridgeIsOptional: true
+          uninstallSupported: true
         }
       },
       null,

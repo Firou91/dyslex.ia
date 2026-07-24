@@ -28,7 +28,6 @@ The install plan is plugin-first:
 
 - install or expose `.codex-plugin/plugin.json`;
 - expose the `skills/` catalog;
-- keep `dyslexai mcp` only as an optional compatibility bridge;
 - do not mutate user files without backup and consent.
 
 Before modifying user files, a full installer must:
@@ -39,20 +38,6 @@ Before modifying user files, a full installer must:
 - be idempotent;
 - support uninstall;
 - preserve paths with spaces.
-
-## Compatibility Bridge
-
-Use the bridge only when a host cannot consume the plugin or skills directly:
-
-```bash
-dyslexai mcp
-```
-
-For Codex CLI:
-
-```bash
-codex mcp add dyslex-ai --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- npx -y @firou91/dyslex.ai mcp
-```
 
 ## Superpowers Install Commands
 

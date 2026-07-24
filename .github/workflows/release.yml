@@ -14,14 +14,6 @@ on:
         options:
           - trusted-publisher
           - npm-token
-      publish-compatibility-registry:
-        description: "Publish optional compatibility registry metadata"
-        required: true
-        default: "false"
-        type: choice
-        options:
-          - "false"
-          - "true"
 
 jobs:
   release:
@@ -65,22 +57,6 @@ jobs:
           esac
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "Using npm auth mode: $MODE"
-      - name: Select optional compatibility registry publishing
-        id: compatibility-registry
-        env:
-          INPUT_ENABLED: ${{ inputs.publish-compatibility-registry }}
-          DEFAULT_ENABLED: ${{ vars.PUBLISH_COMPATIBILITY_REGISTRY }}
-        run: |
-          ENABLED="${INPUT_ENABLED:-${DEFAULT_ENABLED:-false}}"
-          case "$ENABLED" in
-            true|false) ;;
-            *)
-              echo "Unsupported compatibility registry setting: $ENABLED" >&2
-              exit 1
-              ;;
-          esac
-          echo "enabled=$ENABLED" >> "$GITHUB_OUTPUT"
-          echo "Publish optional compatibility registry metadata: $ENABLED"
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm skills:validate
@@ -114,7 +90,7 @@ jobs:
           if (!semver.gt(localVersion, publishedVersion)) {
             console.error(
               `Refusing to publish ${localVersion}: latest published version is ${publishedVersion}. ` +
-                "Bump package.json/server.json/plugin version before releasing."
+                "Bump package.json and plugin version before releasing."
             );
             process.exit(1);
           }
@@ -133,34 +109,3 @@ jobs:
             exit 1
           fi
           npm publish --access public --provenance=false
-      - name: Wait for npm package version to be visible
-        if: steps.compatibility-registry.outputs.enabled == 'true'
-        run: |
-          PACKAGE_NAME="$(node -p "require('./package.json').name")"
-          LOCAL_VERSION="$(node -p "require('./package.json').version")"
-
-          for attempt in $(seq 1 24); do
-            if npm view "$PACKAGE_NAME@$LOCAL_VERSION" version >/dev/null 2>&1; then
-              echo "$PACKAGE_NAME@$LOCAL_VERSION is visible on npm."
-              exit 0
-            fi
-
-            echo "Waiting for $PACKAGE_NAME@$LOCAL_VERSION to appear on npm ($attempt/24)."
-            sleep 10
-          done
-
-          echo "$PACKAGE_NAME@$LOCAL_VERSION was not visible on npm after waiting." >&2
-          exit 1
-      - name: Install MCP publisher
-        if: steps.compatibility-registry.outputs.enabled == 'true'
-        run: |
-          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
-      - name: Validate optional compatibility registry metadata
-        if: steps.compatibility-registry.outputs.enabled == 'true'
-        run: ./mcp-publisher validate server.json
-      - name: Login to optional compatibility registry
-        if: steps.compatibility-registry.outputs.enabled == 'true'
-        run: ./mcp-publisher login github-oidc
-      - name: Publish optional compatibility registry metadata
-        if: steps.compatibility-registry.outputs.enabled == 'true'
-        run: ./mcp-publisher publish

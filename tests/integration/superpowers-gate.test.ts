@@ -1,9 +1,27 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdir, symlink } from "node:fs/promises";
+import { mkdir, mkdtemp, symlink, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { makeFakeSuperpowers, makeTempDir } from "./helpers.js";
+import os from "node:os";
 import { resolveSuperpowersDependency, validateSuperpowersPath } from "../../src/dependency/superpowers.js";
+
+async function makeTempDir(prefix = "dyslexai-test-"): Promise<string> {
+  return mkdtemp(path.join(os.tmpdir(), prefix));
+}
+
+async function makeFakeSuperpowers(version = "6.1.1", parent?: string): Promise<string> {
+  const root = parent ? path.join(parent, "Superpowers With Spaces") : await makeTempDir("superpowers with spaces-");
+  await mkdir(path.join(root, "skills", "using-superpowers"), { recursive: true });
+  await mkdir(path.join(root, ".codex-plugin"), { recursive: true });
+  await writeFile(
+    path.join(root, "skills", "using-superpowers", "SKILL.md"),
+    "---\nname: using-superpowers\ndescription: Minimal test fixture for dependency validation.\n---\n",
+    "utf8"
+  );
+  await writeFile(path.join(root, "package.json"), `${JSON.stringify({ name: "superpowers", version }, null, 2)}\n`, "utf8");
+  await writeFile(path.join(root, ".codex-plugin", "plugin.json"), `${JSON.stringify({ name: "superpowers", version }, null, 2)}\n`, "utf8");
+  return root;
+}
 
 test("rejects fake folder that is only named superpowers", async () => {
   const root = path.join(await makeTempDir(), "superpowers");

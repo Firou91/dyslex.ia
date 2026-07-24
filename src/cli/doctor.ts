@@ -29,12 +29,6 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
       installMode: "plugin-first",
       requiresSuperpowers: true
     },
-    compatibilityBridge: {
-      protocol: "mcp",
-      stdio: true,
-      optional: true,
-      startupRequiresSuperpowers: true
-    },
     skills: {
       available: true,
       catalogPath: "skills",
@@ -55,13 +49,8 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
       path: item.adapterPath,
       install: item.dyslexaiInstall,
       integrationPriority: item.integrationPriority,
-      plugin: item.plugin,
-      compatibilityBridge: item.compatibilityBridge
+      plugin: item.plugin
     })),
-    compatibilityBridgeSmokeTest: {
-      canCreateServer: true,
-      note: "Optional stdio compatibility is covered by integration tests."
-    },
     checkedPaths: verbose && !dependency.ok ? dependency.checked : undefined
   };
 }

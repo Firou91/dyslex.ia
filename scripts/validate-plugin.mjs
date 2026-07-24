@@ -4,7 +4,6 @@ import path from "node:path";
 const root = process.cwd();
 const manifestPath = path.join(root, ".codex-plugin", "plugin.json");
 const packagePath = path.join(root, "package.json");
-const serverPath = path.join(root, "server.json");
 const skillsRoot = path.join(root, "skills");
 const adaptersRoot = path.join(root, "adapters");
 
@@ -31,7 +30,6 @@ function assert(condition, message) {
 
 const manifest = readJson(manifestPath);
 const pkg = readJson(packagePath);
-const server = readJson(serverPath);
 
 if (manifest) {
   requireString(manifest, "name", ".codex-plugin/plugin.json");
@@ -47,14 +45,6 @@ if (manifest) {
   assert(
     Array.isArray(manifest.interface?.defaultPrompt) && manifest.interface.defaultPrompt.length > 0,
     "plugin interface.defaultPrompt must contain at least one prompt"
-  );
-}
-
-if (pkg && server) {
-  assert(pkg.version === server.version, "server.json version must match package.json version");
-  assert(
-    pkg.version === server.packages?.[0]?.version,
-    "server.json packages[0].version must match package.json version"
   );
 }
 
@@ -80,10 +70,6 @@ if (!existsSync(adaptersRoot)) {
     assert(adapter.integrationPriority === "plugin-first", `${entry.name} adapter must be plugin-first`);
     assert(adapter.plugin && typeof adapter.plugin === "object", `${entry.name} adapter must declare plugin`);
     assert(adapter.skills && typeof adapter.skills === "object", `${entry.name} adapter must declare skills`);
-    assert(
-      adapter.compatibilityBridge?.optional === true,
-      `${entry.name} adapter must keep the compatibility bridge optional`
-    );
     assert(
       Array.isArray(adapter.checks) && adapter.checks.includes("plugin-install"),
       `${entry.name} adapter checks must include plugin-install`

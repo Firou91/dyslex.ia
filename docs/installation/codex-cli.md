@@ -52,17 +52,8 @@ Expected plugin payload:
 
 - `.codex-plugin/plugin.json`
 - `skills/`
-- optional `dyslexai mcp` compatibility bridge command
 
-## 4. Compatibility Bridge
-
-Use this only if the current Codex setup cannot consume the plugin directly.
-
-```bash
-codex mcp add dyslex-ai --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- npx -y @firou91/dyslex.ai mcp
-```
-
-## 5. Verify In Codex
+## 4. Verify In Codex
 
 ```bash
 codex plugin list
@@ -80,19 +71,7 @@ Expected result:
 - the accessibility skills are available in a new chat;
 - ambiguous prompts can trigger clarification and readability skills.
 
-For optional bridge usage, also verify:
-
-```bash
-codex mcp list
-```
-
-Then in Codex:
-
-```text
-/mcp
-```
-
-## 6. Troubleshooting
+## 5. Troubleshooting
 
 Check the dependency:
 
@@ -110,4 +89,4 @@ Common failures:
 
 - `Startup blocked: Superpowers was not found`: install Superpowers or set `DYSLEXAI_SUPERPOWERS_PATH`.
 - `Version ... outside supported range`: use a compatible Superpowers version.
-- Codex authentication errors: sign out and sign in to Codex again. This is separate from bridge startup.
+- Codex authentication errors: sign out and sign in to Codex again.

@@ -8,11 +8,6 @@ export interface HostCompatibility {
     mode: "plugin" | "instructions-file" | "package";
     manifest: string;
   };
-  compatibilityBridge: {
-    optional: true;
-    protocol: "mcp";
-    transport: "stdio" | "configuration" | "not-native";
-  };
   skills: "native" | "plugin" | "instructions-file" | "package" | "unknown";
   adapterPath: string;
   superpowersInstall: string;
@@ -25,7 +20,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Claude Code",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/claude-code",
     superpowersInstall: "/plugin install superpowers@claude-plugins-official",
@@ -36,7 +30,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Antigravity",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/antigravity",
     superpowersInstall: "agy plugin install https://github.com/obra/superpowers",
@@ -47,7 +40,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Codex App",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/codex-app",
     superpowersInstall: "Install Superpowers from the official Codex plugin marketplace.",
@@ -58,7 +50,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Codex CLI",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/codex-cli",
     superpowersInstall: "Open /plugins, search for Superpowers, then install it.",
@@ -69,7 +60,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Cursor",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/cursor",
     superpowersInstall: "/add-plugin superpowers",
@@ -80,7 +70,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Factory Droid",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/factory-droid",
     superpowersInstall: "droid plugin marketplace add https://github.com/obra/superpowers && droid plugin install superpowers@superpowers",
@@ -91,7 +80,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "GitHub Copilot CLI",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/copilot-cli",
     superpowersInstall: "copilot plugin marketplace add obra/superpowers-marketplace && copilot plugin install superpowers@superpowers-marketplace",
@@ -102,7 +90,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Kimi Code",
     integrationPriority: "plugin-first",
     plugin: { mode: "plugin", manifest: ".codex-plugin/plugin.json" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "plugin",
     adapterPath: "adapters/kimi-code",
     superpowersInstall: "/plugins install https://github.com/obra/superpowers",
@@ -113,7 +100,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "OpenCode",
     integrationPriority: "plugin-first",
     plugin: { mode: "instructions-file", manifest: ".opencode/INSTALL.md" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "instructions-file",
     adapterPath: "adapters/opencode",
     superpowersInstall: "Follow https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md",
@@ -124,7 +110,6 @@ export const HOSTS: HostCompatibility[] = [
     displayName: "Pi",
     integrationPriority: "plugin-first",
     plugin: { mode: "package", manifest: ".pi" },
-    compatibilityBridge: { optional: true, protocol: "mcp", transport: "configuration" },
     skills: "package",
     adapterPath: "adapters/pi",
     superpowersInstall: "pi install git:github.com/obra/superpowers",

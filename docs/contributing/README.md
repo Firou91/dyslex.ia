@@ -13,7 +13,6 @@ pnpm test
 - TypeScript strict mode.
 - Tests for behavior that protects meaning, identifiers, dependencies, and structured outputs.
 - Small focused skills with `SKILL.md` frontmatter.
-- No hidden instructions in MCP output.
 - No automatic installation of Superpowers.
 
 ## Before Submitting

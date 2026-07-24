@@ -2,7 +2,7 @@
 
 ## Supported Hosts
 
-The host catalog lives in `src/hosts/catalog.ts` and is exposed as `dyslexai://compatibility/hosts`.
+The host catalog lives in `src/hosts/catalog.ts` and is exposed through `dyslexai compatibility`.
 
 Supported targets:
 
@@ -26,7 +26,6 @@ Adapters describe:
 - plugin-first integration path;
 - skills path;
 - instruction or plugin integration point;
-- optional compatibility bridge command and transport;
 - install and uninstall expectations;
 - detection checks.
 

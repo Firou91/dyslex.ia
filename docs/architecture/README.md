@@ -17,24 +17,19 @@ Superpowers determines the process of work.
 - `src/readability`: local transformations, ambiguity checks, terminal summaries, diff summaries, and technical-token protection.
 - `src/dependency`: blocking Superpowers resolver.
 - `src/hosts`: host detection and compatibility catalog.
-- `src/server`: optional stdio compatibility bridge and transport wiring.
-- `src/tools`: strict optional bridge tool schemas and deterministic handlers.
-- `src/resources`: versioned optional bridge resources.
-- `src/prompts`: reusable optional bridge prompt templates.
+- `src/cli`: diagnostics, dependency checks, profile config, and install-plan generation.
 
-## Startup Gate
+## Usage Gate
 
-`resolveSuperpowersDependency()` protects both plugin installation planning and optional bridge startup.
-
-For bridge compatibility, it runs before `server.connect(transport)`.
+`resolveSuperpowersDependency()` protects plugin installation planning and CLI diagnostics.
 
 If dependency validation fails:
 
-- no bridge transport is connected;
-- no tools, prompts, or resources are published to a client;
-- the process returns a non-zero exit code;
-- the error is short and actionable;
+- install planning returns a blocked result;
+- diagnostics explain what dependency is missing;
 - no automatic Superpowers download occurs.
+
+The skills also contain a Superpowers gate. When Superpowers is not installed or loaded, the agent must stop and ask the user to install Superpowers before applying `dyslex.ai`.
 
 ## Dependency Validation
 
@@ -51,8 +46,4 @@ Validation requires:
 
 ## Data Flow
 
-User text, terminal output, diffs, and code are treated as untrusted data. The tools analyze and transform text locally. They do not execute supplied content.
-
-## Streamable HTTP
-
-The architecture keeps transport creation isolated in `src/server/mcp.ts`. A future Streamable HTTP transport can be added beside `stdio`, but it is not enabled by default.
+User text, terminal output, diffs, and code are treated as untrusted data. The readability helpers analyze and transform text locally. They do not execute supplied content.
