@@ -24,10 +24,18 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
     `${JSON.stringify(
       {
         host: host.id,
-        mcp: {
+        integrationPriority: host.integrationPriority,
+        plugin: {
+          mode: host.plugin.mode,
+          manifest: host.plugin.manifest,
+          skillsPath: "skills"
+        },
+        mcpCompatibility: {
+          optional: true,
           command: "dyslexia",
           args: ["mcp"],
-          transport: "stdio"
+          transport: "stdio",
+          note: "Use only for hosts or workflows that cannot consume the skills plugin directly."
         },
         skillsPath: "skills",
         dependency: {
@@ -37,7 +45,8 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
         safety: {
           requiresBackupBeforeUserFileEdits: true,
           idempotent: true,
-          uninstallSupported: true
+          uninstallSupported: true,
+          mcpIsOptional: true
         }
       },
       null,
@@ -45,5 +54,5 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
     )}\n`,
     "utf8"
   );
-  return { ok: true, manifestPath, host };
+  return { ok: true, manifestPath, host, integrationPriority: "plugin-first" };
 }

@@ -6,7 +6,8 @@ Do not publish until the owner explicitly approves.
 
 - Confirm npm package name.
 - Confirm GitHub repository URL.
-- Confirm MCP namespace.
+- Confirm plugin name and marketplace namespace.
+- Confirm MCP namespace only if publishing the optional compatibility server.
 - Ensure the repository is public.
 - Ensure npm account or trusted publishing is configured.
 - Install the official `mcp-publisher` binary.
@@ -26,7 +27,13 @@ Unscoped package rejected by npm as too similar to `dyslexia`; publish under the
 @firou91/dyslex.ia
 ```
 
-MCP name:
+Plugin name:
+
+```text
+dyslex-ia
+```
+
+Optional MCP name:
 
 ```text
 io.github.Firou91/dyslex-ia
@@ -39,6 +46,7 @@ pnpm install --frozen-lockfile
 pnpm typecheck
 pnpm lint
 pnpm skills:validate
+pnpm plugin:validate
 pnpm test
 pnpm build
 npm pack --dry-run
@@ -62,7 +70,20 @@ Recommended CI publication:
 - use npm trusted publishing or OIDC provenance;
 - verify tag matches `package.json.version`.
 
-## MCP Registry Publication
+## Plugin Publication
+
+npm publication does not automatically make the plugin visible in Codex or any other agent marketplace.
+
+For Codex, publish or register the plugin through the configured plugin marketplace. The plugin artifact must include:
+
+- `.codex-plugin/plugin.json`;
+- `skills/`;
+- host adapter plans;
+- docs.
+
+For other agents, use each agent's plugin marketplace or documented local plugin installation path. If no marketplace exists, ship a static adapter install plan and document the manual installation.
+
+## Optional MCP Registry Publication
 
 Login:
 
@@ -86,7 +107,14 @@ For npm provenance:
 - use `id-token: write`;
 - run publication from a protected release environment.
 
-For MCP registry:
+For plugin publication:
+
+- `.codex-plugin/plugin.json` version must match `package.json.version`;
+- plugin `skills` must point to `./skills/`;
+- every adapter must be `plugin-first`;
+- optional MCP must be described as compatibility, not as the primary install path.
+
+For optional MCP registry:
 
 - GitHub namespace must match `io.github.<owner>/dyslex-ia`;
 - `package.json.mcpName` must match `server.json.name`;

@@ -1,9 +1,37 @@
 {
   "host": "kimi-code",
   "displayName": "Kimi Code",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "plugin", "path": "skills" },
-  "instructions": { "plugin": ".kimi-plugin", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "/plugins install https://github.com/obra/superpowers" },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "kimi-plugin-manifest"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "plugin",
+    "skillsPath": "skills",
+    "manifest": ".codex-plugin/plugin.json"
+  },
+  "skills": {
+    "mode": "plugin",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "plugin": ".kimi-plugin",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "/plugins install https://github.com/obra/superpowers"
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "kimi-plugin-manifest",
+    "mcp-stdio-optional"
+  ]
 }

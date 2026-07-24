@@ -1,7 +1,7 @@
 {
   "name": "@firou91/dyslex.ia",
-  "version": "0.2.2",
-  "description": "Accessibility layer for AI agents, built as MCP server and Agent Skills collection on top of Superpowers.",
+  "version": "0.3.0",
+  "description": "Accessibility skills plugin for AI agents, with optional MCP compatibility on top of Superpowers.",
   "type": "module",
   "license": "Apache-2.0",
   "main": "./dist/src/server/mcp.js",
@@ -15,6 +15,7 @@
     "dyslex.ia": "dist/src/cli/index.js"
   },
   "files": [
+    ".codex-plugin",
     "dist/src",
     "skills",
     "adapters",
@@ -25,13 +26,14 @@
     "SECURITY.md"
   ],
   "keywords": [
-    "mcp",
-    "model-context-protocol",
-    "codex",
     "accessibility",
     "dyslexia",
+    "plugin",
     "agent-skills",
-    "superpowers"
+    "superpowers",
+    "codex",
+    "mcp",
+    "model-context-protocol"
   ],
   "repository": {
     "type": "git",
@@ -50,10 +52,11 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "tsc -p tsconfig.json --noEmit",
     "skills:validate": "node scripts/validate-skills.mjs",
-    "test": "npm run build && node --test dist/tests/**/*.test.js",
+    "plugin:validate": "node scripts/validate-plugin.mjs",
+    "test": "npm run build && node --test --test-concurrency=1 dist/tests/*.test.js dist/tests/integration/*.test.js",
     "doctor": "node dist/src/cli/index.js doctor",
-    "pack:dry-run": "npm pack --dry-run",
-    "prepublishOnly": "pnpm typecheck && pnpm lint && pnpm skills:validate && pnpm test && pnpm build && npm pack --dry-run"
+    "pack:dry-run": "npm pack --dry-run --cache .test/npm-cache",
+    "prepublishOnly": "pnpm typecheck && pnpm lint && pnpm skills:validate && pnpm plugin:validate && pnpm test && pnpm build && npm pack --dry-run --cache .test/npm-cache"
   },
   "dependencies": {
     "env-paths": "^3.0.0",

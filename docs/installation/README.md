@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-Install Superpowers for each host before installing `dyslex.ia`.
+Install Superpowers for each host before installing the `dyslex.ia` skills plugin.
 
 `dyslex.ia` extends Superpowers and cannot run independently.
 
@@ -22,7 +22,14 @@ dyslexia install --host claude-code
 dyslexia install --host cursor
 ```
 
-The installer currently writes a host adapter manifest to `adapters/<host>/install-plan.json`.
+The installer currently writes a host adapter install plan to `adapters/<host>/install-plan.json`.
+
+The install plan is plugin-first:
+
+- install or expose `.codex-plugin/plugin.json`;
+- expose the `skills/` catalog;
+- keep `dyslexia mcp` only as optional compatibility;
+- do not mutate user files without backup and consent.
 
 Before modifying user files, a full installer must:
 
@@ -32,6 +39,20 @@ Before modifying user files, a full installer must:
 - be idempotent;
 - support uninstall;
 - preserve paths with spaces.
+
+## Optional MCP Compatibility
+
+Use MCP only when a host cannot consume the plugin or skills directly:
+
+```bash
+dyslexia mcp
+```
+
+For Codex CLI:
+
+```bash
+codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
+```
 
 ## Superpowers Install Commands
 

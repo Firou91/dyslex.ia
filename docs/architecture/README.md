@@ -10,20 +10,23 @@ Superpowers determines the process of work.
 
 ## Components
 
-- `src/server`: MCP server and `stdio` transport wiring.
-- `src/tools`: strict tool schemas and deterministic handlers.
-- `src/resources`: versioned MCP resources.
-- `src/prompts`: reusable MCP prompt templates.
+- `.codex-plugin/plugin.json`: Codex plugin manifest for the skills bundle.
+- `skills`: native Agent Skills collection and primary integration surface.
+- `adapters`: thin host-specific plugin installation manifests.
 - `src/profiles`: local accessibility profiles and config precedence.
 - `src/readability`: local transformations, ambiguity checks, terminal summaries, diff summaries, and technical-token protection.
 - `src/dependency`: blocking Superpowers resolver.
 - `src/hosts`: host detection and compatibility catalog.
-- `skills`: native Agent Skills collection.
-- `adapters`: thin host-specific installation manifests.
+- `src/server`: optional MCP compatibility server and `stdio` transport wiring.
+- `src/tools`: strict optional MCP tool schemas and deterministic handlers.
+- `src/resources`: versioned optional MCP resources.
+- `src/prompts`: reusable optional MCP prompt templates.
 
 ## Startup Gate
 
-`resolveSuperpowersDependency()` runs before `server.connect(transport)`.
+`resolveSuperpowersDependency()` protects both plugin installation planning and optional MCP startup.
+
+For optional MCP compatibility, it runs before `server.connect(transport)`.
 
 If dependency validation fails:
 

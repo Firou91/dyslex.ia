@@ -1,9 +1,37 @@
 {
   "host": "pi",
   "displayName": "Pi",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "package", "path": "skills" },
-  "instructions": { "package": ".pi", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "pi install git:github.com/obra/superpowers" },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "pi-package"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "package",
+    "skillsPath": "skills",
+    "manifest": ".pi"
+  },
+  "skills": {
+    "mode": "package",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "package": ".pi",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "pi install git:github.com/obra/superpowers"
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "pi-package",
+    "mcp-stdio-optional"
+  ]
 }

@@ -1,9 +1,37 @@
 {
   "host": "copilot-cli",
   "displayName": "GitHub Copilot CLI",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "plugin", "path": "skills" },
-  "instructions": { "plugin": "copilot plugin", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "copilot plugin marketplace add obra/superpowers-marketplace && copilot plugin install superpowers@superpowers-marketplace" },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "copilot-plugin"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "plugin",
+    "skillsPath": "skills",
+    "manifest": ".codex-plugin/plugin.json"
+  },
+  "skills": {
+    "mode": "plugin",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "plugin": "copilot plugin",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "copilot plugin marketplace add obra/superpowers-marketplace && copilot plugin install superpowers@superpowers-marketplace"
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "copilot-plugin",
+    "mcp-stdio-optional"
+  ]
 }

@@ -7,7 +7,18 @@ Test environment used:
 - Working model for this account during validation: `gpt-5.6-sol`.
 - Config path: `C:\Users\firou\.codex\config.toml`.
 
-## Configuration Safety
+## Plugin-First Test
+
+Codex plugin validation is the primary test path.
+
+Expected result:
+
+- `.codex-plugin/plugin.json` validates;
+- `skills/` contains 16 valid skills;
+- Codex lists `dyslex.ia` in `/plugins` after plugin installation;
+- a new Codex chat can invoke the accessibility skills from an ambiguous prompt.
+
+## Optional MCP Configuration Safety
 
 Tests must not leave MCP servers in the user's Codex config.
 

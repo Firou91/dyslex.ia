@@ -1,6 +1,6 @@
 # dyslex.ia
 
-`dyslex.ia` is an accessibility layer for AI agents. It improves readability, instruction decoding, typo tolerance, writing support, error explanations, diff reading, and context reentry.
+`dyslex.ia` is an accessibility skills plugin for AI agents. It improves readability, instruction decoding, typo tolerance, writing support, error explanations, diff reading, and context reentry.
 
 It does not diagnose disability or claim medical benefit.
 
@@ -10,16 +10,17 @@ Superpowers determines the work process.
 
 `dyslex.ia` adapts how that process is presented and understood.
 
-The MCP server refuses to start unless a compatible `obra/superpowers` installation is found.
+The plugin expects a compatible `obra/superpowers` installation. The optional MCP compatibility server also refuses to start unless Superpowers is found.
 
 ## What Is Included
 
-- TypeScript MCP server using `stdio`.
+- Codex plugin manifest in `.codex-plugin/plugin.json`.
 - CLI: `dyslexia`.
-- 11 MCP tools.
-- 8 MCP resources.
-- 8 MCP prompt templates.
 - 16 native Agent Skills.
+- Optional TypeScript MCP compatibility server using `stdio`.
+- 11 optional MCP tools.
+- 8 optional MCP resources.
+- 8 optional MCP prompt templates.
 - Host adapter manifests for Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, GitHub Copilot CLI, Kimi Code, OpenCode, and Pi.
 - Unit tests for the core behavior.
 
@@ -29,6 +30,7 @@ The MCP server refuses to start unless a compatible `obra/superpowers` installat
 pnpm install
 pnpm build
 pnpm test
+pnpm plugin:validate
 
 dyslexia doctor
 dyslexia doctor --verbose
@@ -39,9 +41,28 @@ dyslexia profile set balanced
 dyslexia config show
 ```
 
-## MCP
+## Plugin
 
-Run the server with:
+The primary integration is the skills plugin:
+
+```text
+.codex-plugin/plugin.json
+skills/
+```
+
+Use host-specific plugin installation when available:
+
+```bash
+dyslexia install --host codex-cli
+dyslexia install --host claude-code
+dyslexia install --host cursor
+```
+
+The installer currently emits a static, reviewable install plan. Host-specific writes remain gated behind backup and consent requirements.
+
+## Optional MCP Compatibility
+
+Run the compatibility server only for hosts or workflows that cannot consume the skills plugin directly:
 
 ```bash
 dyslexia mcp
@@ -59,13 +80,27 @@ Verify the dependency:
 npx -y @firou91/dyslex.ia doctor --verbose
 ```
 
-Add `dyslex.ia` to Codex CLI from npm after publication:
+For plugin-first usage, install `dyslex.ia` as a Codex plugin from the configured marketplace or local plugin source.
+
+For optional MCP compatibility from npm after publication:
 
 ```bash
 codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
 ```
 
-Check Codex:
+Check Codex plugin state:
+
+```bash
+codex plugin list
+```
+
+Inside Codex, use:
+
+```text
+/plugins
+```
+
+Check optional MCP state:
 
 ```bash
 codex mcp list
@@ -88,6 +123,7 @@ npx -y @firou91/dyslex.ia dependency status
 - [Architecture](docs/architecture/README.md)
 - [Installation](docs/installation/README.md)
 - [Codex CLI Installation](docs/installation/codex-cli.md)
+- [Plugin E2E Publication](docs/installation/plugin-e2e.md)
 - [Compatibility](docs/compatibility/README.md)
 - [Security](docs/security/README.md)
 - [Accessibility](docs/accessibility/README.md)

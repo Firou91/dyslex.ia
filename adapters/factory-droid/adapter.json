@@ -1,9 +1,37 @@
 {
   "host": "factory-droid",
   "displayName": "Factory Droid",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "plugin", "path": "skills" },
-  "instructions": { "plugin": "droid plugin", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "droid plugin marketplace add https://github.com/obra/superpowers && droid plugin install superpowers@superpowers" },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "droid-plugin"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "plugin",
+    "skillsPath": "skills",
+    "manifest": ".codex-plugin/plugin.json"
+  },
+  "skills": {
+    "mode": "plugin",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "plugin": "droid plugin",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "droid plugin marketplace add https://github.com/obra/superpowers && droid plugin install superpowers@superpowers"
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "droid-plugin",
+    "mcp-stdio-optional"
+  ]
 }

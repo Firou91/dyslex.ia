@@ -1,0 +1,40 @@
+{
+  "name": "dyslex-ia",
+  "version": "0.3.0",
+  "description": "Accessibility skills plugin for AI agents. Improves readability, instruction decoding, typo tolerance, and technical context handling.",
+  "author": {
+    "name": "Firou91",
+    "url": "https://github.com/Firou91"
+  },
+  "homepage": "https://github.com/Firou91/dyslex.ia#readme",
+  "repository": "https://github.com/Firou91/dyslex.ia",
+  "license": "Apache-2.0",
+  "keywords": [
+    "accessibility",
+    "dyslexia",
+    "agent-skills",
+    "codex",
+    "superpowers",
+    "readability"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "dyslex.ia",
+    "shortDescription": "Accessibility skills for clearer agent interactions.",
+    "longDescription": "dyslex.ia packages accessibility-focused skills for AI agents. It helps agents clarify ambiguous instructions, preserve technical tokens, explain errors and diffs, and produce easier-to-read responses without claiming medical diagnosis or treatment.",
+    "developerName": "Firou91",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills",
+      "Accessibility",
+      "Readability"
+    ],
+    "websiteURL": "https://github.com/Firou91/dyslex.ia",
+    "defaultPrompt": [
+      "Clarify this instruction before acting.",
+      "Rewrite this output for readability.",
+      "Explain this error without losing technical details."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

@@ -30,6 +30,8 @@ export async function makeFakeSuperpowers(version = "6.1.1", parent?: string): P
 export function testEnv(extra: Record<string, string> = {}): Record<string, string> {
   const env: Record<string, string> = {};
   for (const [key, value] of Object.entries(process.env)) {
+    const normalized = key.toLowerCase();
+    if (normalized.startsWith("npm_")) continue;
     if (value !== undefined) env[key] = value;
   }
   return {

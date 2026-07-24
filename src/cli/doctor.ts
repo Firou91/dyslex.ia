@@ -23,8 +23,15 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
     dyslexiaVersion: VERSION,
     nodeVersion: process.version,
     host,
-    mcp: {
+    plugin: {
+      manifestPath: ".codex-plugin/plugin.json",
+      skillsPath: "skills",
+      installMode: "plugin-first",
+      requiresSuperpowers: true
+    },
+    mcpCompatibility: {
       stdio: true,
+      optional: true,
       startupRequiresSuperpowers: true
     },
     skills: {
@@ -42,10 +49,17 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
       userConfig,
       exists: await canAccess(userConfig)
     },
-    adapters: HOSTS.map((item) => ({ id: item.id, path: item.adapterPath, install: item.dyslexiaInstall })),
-    mcpSmokeTest: {
+    adapters: HOSTS.map((item) => ({
+      id: item.id,
+      path: item.adapterPath,
+      install: item.dyslexiaInstall,
+      integrationPriority: item.integrationPriority,
+      plugin: item.plugin,
+      mcpCompatibility: item.mcpCompatibility
+    })),
+    mcpCompatibilitySmokeTest: {
       canCreateServer: true,
-      note: "Full stdio exchange is covered by integration tests."
+      note: "Optional stdio compatibility is covered by integration tests."
     },
     checkedPaths: verbose && !dependency.ok ? dependency.checked : undefined
   };

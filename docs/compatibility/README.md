@@ -23,9 +23,10 @@ Each adapter is thin. Shared logic stays in `src`.
 
 Adapters describe:
 
-- MCP command and transport;
+- plugin-first integration path;
 - skills path;
 - instruction or plugin integration point;
+- optional MCP compatibility command and transport;
 - install and uninstall expectations;
 - detection checks.
 

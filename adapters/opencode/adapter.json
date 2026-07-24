@@ -1,9 +1,37 @@
 {
   "host": "opencode",
   "displayName": "OpenCode",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "instructions-file", "path": "skills" },
-  "instructions": { "file": ".opencode/INSTALL.md", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "Follow https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md" },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "opencode-instructions"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "instructions-file",
+    "skillsPath": "skills",
+    "manifest": ".opencode/INSTALL.md"
+  },
+  "skills": {
+    "mode": "instructions-file",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "file": ".opencode/INSTALL.md",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "Follow https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md"
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "opencode-instructions",
+    "mcp-stdio-optional"
+  ]
 }

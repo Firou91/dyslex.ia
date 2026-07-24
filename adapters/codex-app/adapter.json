@@ -1,9 +1,37 @@
 {
   "host": "codex-app",
   "displayName": "Codex App",
-  "mcp": { "transport": "stdio", "command": "dyslexia", "args": ["mcp"] },
-  "skills": { "mode": "plugin", "path": "skills" },
-  "instructions": { "plugin": ".codex-plugin", "requiresBackup": true },
-  "superpowers": { "required": true, "install": "Install Superpowers from the Codex plugin marketplace." },
-  "checks": ["superpowers", "mcp-stdio", "skills-catalog", "codex-plugin-manifest"]
+  "integrationPriority": "plugin-first",
+  "plugin": {
+    "mode": "plugin",
+    "skillsPath": "skills",
+    "manifest": ".codex-plugin/plugin.json"
+  },
+  "skills": {
+    "mode": "plugin",
+    "path": "skills"
+  },
+  "mcpCompatibility": {
+    "optional": true,
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ]
+  },
+  "instructions": {
+    "plugin": ".codex-plugin",
+    "requiresBackup": true
+  },
+  "superpowers": {
+    "required": true,
+    "install": "Install Superpowers from the Codex plugin marketplace."
+  },
+  "checks": [
+    "superpowers",
+    "skills-catalog",
+    "plugin-install",
+    "codex-plugin-manifest",
+    "mcp-stdio-optional"
+  ]
 }

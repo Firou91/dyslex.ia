@@ -15,7 +15,7 @@ function print(value: unknown): void {
 async function main(argv: string[]): Promise<void> {
   const [command, subcommand, ...rest] = argv;
   if (!command || command === "help" || command === "--help") {
-    print("Usage: dyslexia <mcp|doctor|dependency|compatibility|config|profile|install|uninstall|update>");
+    print("Usage: dyslexia <doctor|dependency|compatibility|config|profile|install|uninstall|update|mcp>");
     return;
   }
 
@@ -67,7 +67,7 @@ async function main(argv: string[]): Promise<void> {
   }
 
   if (command === "uninstall") {
-    print({ ok: true, dryRun: true, message: "Remove the adapter manifest and MCP entry for the selected host after backing up user files." });
+    print({ ok: true, dryRun: true, message: "Remove the plugin install plan and optional MCP entry for the selected host after backing up user files." });
     return;
   }
 
