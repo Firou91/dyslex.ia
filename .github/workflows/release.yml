@@ -4,6 +4,16 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      npm-auth-mode:
+        description: "npm publish authentication mode"
+        required: true
+        default: "trusted-publisher"
+        type: choice
+        options:
+          - trusted-publisher
+          - npm-token
 
 jobs:
   release:
@@ -31,14 +41,74 @@ jobs:
         run: |
           VERSION="v$(node -p "require('./package.json').version")"
           test "$GITHUB_REF_NAME" = "$VERSION"
+      - name: Select npm publish authentication mode
+        id: npm-auth
+        env:
+          INPUT_MODE: ${{ inputs.npm-auth-mode }}
+          DEFAULT_MODE: ${{ vars.NPM_PUBLISH_AUTH_MODE }}
+        run: |
+          MODE="${INPUT_MODE:-${DEFAULT_MODE:-trusted-publisher}}"
+          case "$MODE" in
+            trusted-publisher|npm-token) ;;
+            *)
+              echo "Unsupported npm auth mode: $MODE" >&2
+              exit 1
+              ;;
+          esac
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Using npm auth mode: $MODE"
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm skills:validate
+      - run: pnpm plugin:validate
       - run: pnpm test
       - run: pnpm build
       - run: npm pack --dry-run
-      - name: Publish npm package
-        run: npm publish --access public
+      - name: Check package version is newer than npm
+        run: |
+          PACKAGE_NAME="$(node -p "require('./package.json').name")"
+          LOCAL_VERSION="$(node -p "require('./package.json').version")"
+          PUBLISHED_VERSION="$(npm view "$PACKAGE_NAME" version 2>/dev/null || true)"
+
+          if [ -z "$PUBLISHED_VERSION" ]; then
+            echo "No published version found for $PACKAGE_NAME. First publish is allowed."
+            exit 0
+          fi
+
+          node --input-type=module - "$LOCAL_VERSION" "$PUBLISHED_VERSION" <<'NODE'
+          import semver from "semver";
+
+          const [localVersion, publishedVersion] = process.argv.slice(2);
+          if (!semver.valid(localVersion)) {
+            console.error(`Invalid local package version: ${localVersion}`);
+            process.exit(1);
+          }
+          if (!semver.valid(publishedVersion)) {
+            console.error(`Invalid published package version: ${publishedVersion}`);
+            process.exit(1);
+          }
+          if (!semver.gt(localVersion, publishedVersion)) {
+            console.error(
+              `Refusing to publish ${localVersion}: latest published version is ${publishedVersion}. ` +
+                "Bump package.json/server.json/plugin version before releasing."
+            );
+            process.exit(1);
+          }
+          console.log(`Version check passed: ${localVersion} > ${publishedVersion}`);
+          NODE
+      - name: Publish npm package with Trusted Publishing
+        if: steps.npm-auth.outputs.mode == 'trusted-publisher'
+        run: npm publish --access public --provenance
+      - name: Publish npm package with NPM_TOKEN
+        if: steps.npm-auth.outputs.mode == 'npm-token'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN secret is required when npm-auth-mode is npm-token." >&2
+            exit 1
+          fi
+          npm publish --access public --provenance=false
       - name: Install MCP publisher
         run: |
           curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher

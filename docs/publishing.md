@@ -69,6 +69,28 @@ Recommended CI publication:
 - require protected GitHub environment approval;
 - use npm trusted publishing or OIDC provenance;
 - verify tag matches `package.json.version`.
+- verify `package.json.version` is strictly greater than the latest version already published to npm.
+
+The release workflow supports two npm authentication modes:
+
+- `trusted-publisher`: default. Uses npm Trusted Publishing and provenance.
+- `npm-token`: fallback. Uses the `NPM_TOKEN` repository secret and publishes with `--provenance=false`.
+
+For tag-triggered releases, set the repository variable when a fallback is required:
+
+```text
+NPM_PUBLISH_AUTH_MODE=npm-token
+```
+
+For manual releases, use the workflow dispatch `npm-auth-mode` input.
+
+Required secret for token fallback:
+
+```text
+NPM_TOKEN
+```
+
+Use `npm-token` only when Trusted Publishing is unavailable or blocked by a provenance transparency-log issue. Prefer `trusted-publisher` for normal releases.
 
 ## Plugin Publication
 
