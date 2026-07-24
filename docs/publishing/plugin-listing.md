@@ -117,7 +117,7 @@ Brand color:
 Logo:
 
 ```text
-TODO: Provide a square production-ready image.
+assets/logo.png
 ```
 
 ## Starter Prompts

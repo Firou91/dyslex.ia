@@ -1,6 +1,6 @@
 {
   "name": "@firou91/dyslex.ai",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Accessibility skills plugin for AI agents on top of Superpowers.",
   "type": "module",
   "license": "Apache-2.0",
@@ -16,6 +16,7 @@
   },
   "files": [
     ".codex-plugin",
+    "assets",
     "dist/src",
     "skills",
     "adapters",
@@ -51,6 +52,7 @@
     "lint": "tsc -p tsconfig.json --noEmit",
     "skills:validate": "node scripts/validate-skills.mjs",
     "plugin:validate": "node scripts/validate-plugin.mjs",
+    "submission:zip": "node scripts/create-submission-zip.mjs",
     "test": "npm run build && node --test --test-concurrency=1 dist/tests/*.test.js dist/tests/integration/*.test.js",
     "doctor": "node dist/src/cli/index.js doctor",
     "pack:dry-run": "npm pack --dry-run --cache .test/npm-cache",

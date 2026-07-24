@@ -1,6 +1,6 @@
 {
   "name": "dyslex-ai",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Accessibility skills plugin for AI agents. Improves readability, instruction decoding, typo tolerance, and technical context handling on top of Superpowers.",
   "author": {
     "name": "Firou",
@@ -36,6 +36,8 @@
       "Rewrite this output for readability.",
       "Explain this error without losing technical details."
     ],
-    "brandColor": "#2563EB"
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
   }
 }

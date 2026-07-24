@@ -255,6 +255,12 @@ That means:
 
 The project is not trying to make agents softer or less rigorous. It is trying to make rigorous work easier to read, resume, and verify.
 
+## Identity
+
+Here is how we connect the very minimal visual identity to Dyslex.ai's role, name, and philosophy.
+
+Read the full visual identity notes in [Identity](docs/identity.md).
+
 ## Support
 
 Publishing and maintaining Dyslex.ai across public agent ecosystems costs time and API tokens. Making an accessibility plugin publicly available usually requires repeated review passes, test runs, model-specific validation, and ongoing compatibility checks.

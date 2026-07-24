@@ -28,6 +28,36 @@ function assert(condition, message) {
   if (!condition) errors.push(message);
 }
 
+function validateSquarePng(reference, label) {
+  if (typeof reference !== "string" || reference.trim() === "") {
+    errors.push(`${label} is required`);
+    return;
+  }
+  if (!reference.startsWith("./")) {
+    errors.push(`${label} must be a ./-prefixed plugin-relative path`);
+    return;
+  }
+  const file = path.join(root, reference);
+  if (!existsSync(file)) {
+    errors.push(`${label} must reference an existing image`);
+    return;
+  }
+  const buffer = readFileSync(file);
+  const isPng =
+    buffer.length >= 24 &&
+    buffer[0] === 0x89 &&
+    buffer[1] === 0x50 &&
+    buffer[2] === 0x4e &&
+    buffer[3] === 0x47;
+  if (!isPng) {
+    errors.push(`${label} must reference a PNG image`);
+    return;
+  }
+  const width = buffer.readUInt32BE(16);
+  const height = buffer.readUInt32BE(20);
+  if (width !== height) errors.push(`${label} must reference a square image`);
+}
+
 const manifest = readJson(manifestPath);
 const pkg = readJson(packagePath);
 
@@ -41,6 +71,8 @@ if (manifest) {
   assert(manifest.license === "Apache-2.0", "plugin license must be Apache-2.0");
   assert(typeof manifest.author?.name === "string", "plugin author.name is required");
   assert(typeof manifest.interface?.displayName === "string", "plugin interface.displayName is required");
+  validateSquarePng(manifest.interface?.composerIcon, "plugin interface.composerIcon");
+  validateSquarePng(manifest.interface?.logo, "plugin interface.logo");
   assert(Array.isArray(manifest.interface?.capabilities), "plugin interface.capabilities must be an array");
   assert(
     Array.isArray(manifest.interface?.defaultPrompt) && manifest.interface.defaultPrompt.length > 0,
