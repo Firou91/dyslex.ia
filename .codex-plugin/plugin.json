@@ -1,6 +1,6 @@
 {
   "name": "dyslex-ia",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Accessibility skills plugin for AI agents. Improves readability, instruction decoding, typo tolerance, and technical context handling.",
   "author": {
     "name": "Firou91",

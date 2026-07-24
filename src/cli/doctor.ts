@@ -29,7 +29,8 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
       installMode: "plugin-first",
       requiresSuperpowers: true
     },
-    mcpCompatibility: {
+    compatibilityBridge: {
+      protocol: "mcp",
       stdio: true,
       optional: true,
       startupRequiresSuperpowers: true
@@ -55,9 +56,9 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
       install: item.dyslexiaInstall,
       integrationPriority: item.integrationPriority,
       plugin: item.plugin,
-      mcpCompatibility: item.mcpCompatibility
+      compatibilityBridge: item.compatibilityBridge
     })),
-    mcpCompatibilitySmokeTest: {
+    compatibilityBridgeSmokeTest: {
       canCreateServer: true,
       note: "Optional stdio compatibility is covered by integration tests."
     },

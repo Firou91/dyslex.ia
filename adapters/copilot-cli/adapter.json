@@ -11,14 +11,6 @@
     "mode": "plugin",
     "path": "skills"
   },
-  "mcpCompatibility": {
-    "optional": true,
-    "transport": "stdio",
-    "command": "dyslexia",
-    "args": [
-      "mcp"
-    ]
-  },
   "instructions": {
     "plugin": "copilot plugin",
     "requiresBackup": true
@@ -32,6 +24,16 @@
     "skills-catalog",
     "plugin-install",
     "copilot-plugin",
-    "mcp-stdio-optional"
-  ]
+    "compatibility-bridge-optional"
+  ],
+  "compatibilityBridge": {
+    "optional": true,
+    "protocol": "mcp",
+    "transport": "stdio",
+    "command": "dyslexia",
+    "args": [
+      "mcp"
+    ],
+    "note": "Use only for hosts or workflows that cannot consume the skills plugin directly."
+  }
 }

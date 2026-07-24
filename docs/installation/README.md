@@ -28,7 +28,7 @@ The install plan is plugin-first:
 
 - install or expose `.codex-plugin/plugin.json`;
 - expose the `skills/` catalog;
-- keep `dyslexia mcp` only as optional compatibility;
+- keep `dyslexia mcp` only as an optional compatibility bridge;
 - do not mutate user files without backup and consent.
 
 Before modifying user files, a full installer must:
@@ -40,9 +40,9 @@ Before modifying user files, a full installer must:
 - support uninstall;
 - preserve paths with spaces.
 
-## Optional MCP Compatibility
+## Compatibility Bridge
 
-Use MCP only when a host cannot consume the plugin or skills directly:
+Use the bridge only when a host cannot consume the plugin or skills directly:
 
 ```bash
 dyslexia mcp

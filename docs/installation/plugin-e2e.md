@@ -17,7 +17,7 @@ Compatibility artifact:
 - `dyslexia mcp`
 - `server.json`
 
-The MCP path is optional and must not be the only published integration.
+The bridge path is optional and must not be the only published integration.
 
 ## 1. Local Source Validation
 
@@ -37,7 +37,7 @@ Expected result:
 - 16 skills validate.
 - `.codex-plugin/plugin.json` validates.
 - all adapters are `plugin-first`.
-- optional MCP tests still pass.
+- optional bridge tests still pass.
 
 ## 2. Package Validation
 
@@ -77,7 +77,7 @@ Expected result:
 - the 16 skills are available in the new chat.
 - a deliberately ambiguous prompt triggers the relevant skills before implementation.
 
-## 4. Codex Optional MCP E2E
+## 4. Codex Compatibility Bridge E2E
 
 Only for compatibility:
 
@@ -120,7 +120,7 @@ For each host, verify:
 - Superpowers is installed and detected;
 - the generated `install-plan.json` says `integrationPriority: plugin-first`;
 - the skills catalog path is valid;
-- MCP is marked optional only;
+- the compatibility bridge is marked optional only;
 - user config mutations are backed up or manually approved.
 
 ## 6. npm Publication
@@ -171,5 +171,4 @@ Then verify each target agent:
 - plugin visible in its plugin UI or list command;
 - skills visible in a new session;
 - ambiguous prompt scenario works;
-- optional MCP compatibility still initializes where configured.
-
+- optional bridge compatibility still initializes where configured.

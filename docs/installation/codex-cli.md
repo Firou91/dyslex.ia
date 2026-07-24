@@ -52,9 +52,9 @@ Expected plugin payload:
 
 - `.codex-plugin/plugin.json`
 - `skills/`
-- optional `dyslexia mcp` compatibility command
+- optional `dyslexia mcp` compatibility bridge command
 
-## 4. Optional MCP Compatibility
+## 4. Compatibility Bridge
 
 Use this only if the current Codex setup cannot consume the plugin directly.
 
@@ -80,7 +80,7 @@ Expected result:
 - the accessibility skills are available in a new chat;
 - ambiguous prompts can trigger clarification and readability skills.
 
-For optional MCP compatibility, also verify:
+For optional bridge usage, also verify:
 
 ```bash
 codex mcp list
@@ -110,4 +110,4 @@ Common failures:
 
 - `Startup blocked: Superpowers was not found`: install Superpowers or set `DYSLEXIA_SUPERPOWERS_PATH`.
 - `Version ... outside supported range`: use a compatible Superpowers version.
-- Codex authentication errors: sign out and sign in to Codex again. This is separate from MCP startup.
+- Codex authentication errors: sign out and sign in to Codex again. This is separate from bridge startup.

@@ -81,8 +81,8 @@ if (!existsSync(adaptersRoot)) {
     assert(adapter.plugin && typeof adapter.plugin === "object", `${entry.name} adapter must declare plugin`);
     assert(adapter.skills && typeof adapter.skills === "object", `${entry.name} adapter must declare skills`);
     assert(
-      adapter.mcpCompatibility?.optional === true,
-      `${entry.name} adapter must keep MCP only as optional compatibility`
+      adapter.compatibilityBridge?.optional === true,
+      `${entry.name} adapter must keep the compatibility bridge optional`
     );
     assert(
       Array.isArray(adapter.checks) && adapter.checks.includes("plugin-install"),

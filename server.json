@@ -2,17 +2,17 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Firou91/dyslex-ia",
   "title": "dyslex.ia",
-  "description": "Optional dyslex.ia MCP compatibility server for hosts that cannot consume the skills plugin directly. Requires Superpowers.",
+  "description": "Compatibility bridge for the dyslex.ia skills plugin. Requires Superpowers.",
   "repository": {
     "url": "https://github.com/Firou91/dyslex.ia",
     "source": "github"
   },
-  "version": "0.3.0",
+  "version": "0.3.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@firou91/dyslex.ia",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "transport": {
         "type": "stdio"
       },

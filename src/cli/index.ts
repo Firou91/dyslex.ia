@@ -67,7 +67,7 @@ async function main(argv: string[]): Promise<void> {
   }
 
   if (command === "uninstall") {
-    print({ ok: true, dryRun: true, message: "Remove the plugin install plan and optional MCP entry for the selected host after backing up user files." });
+    print({ ok: true, dryRun: true, message: "Remove the plugin install plan and optional compatibility bridge entry for the selected host after backing up user files." });
     return;
   }
 

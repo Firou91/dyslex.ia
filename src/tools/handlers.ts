@@ -136,7 +136,12 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
           node: process.version,
           dependency,
           plugin: { manifestPath: ".codex-plugin/plugin.json", skillsPath: "skills", installMode: "plugin-first" },
-          mcpCompatibility: { transport: "stdio", optional: true, serverBlockedWithoutSuperpowers: true },
+          compatibilityBridge: {
+            protocol: "mcp",
+            transport: "stdio",
+            optional: true,
+            serverBlockedWithoutSuperpowers: true
+          },
           skills: { catalogPath: "skills", requiredCount: 16 }
         });
       }

@@ -1,7 +1,7 @@
 {
   "name": "@firou91/dyslex.ia",
-  "version": "0.3.0",
-  "description": "Accessibility skills plugin for AI agents, with optional MCP compatibility on top of Superpowers.",
+  "version": "0.3.1",
+  "description": "Accessibility skills plugin for AI agents, with an optional stdio compatibility bridge on top of Superpowers.",
   "type": "module",
   "license": "Apache-2.0",
   "main": "./dist/src/server/mcp.js",
@@ -32,8 +32,7 @@
     "agent-skills",
     "superpowers",
     "codex",
-    "mcp",
-    "model-context-protocol"
+    "compatibility-bridge"
   ],
   "repository": {
     "type": "git",

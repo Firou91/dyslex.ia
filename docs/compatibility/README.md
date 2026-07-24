@@ -26,7 +26,7 @@ Adapters describe:
 - plugin-first integration path;
 - skills path;
 - instruction or plugin integration point;
-- optional MCP compatibility command and transport;
+- optional compatibility bridge command and transport;
 - install and uninstall expectations;
 - detection checks.
 

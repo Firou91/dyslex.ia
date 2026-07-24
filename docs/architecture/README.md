@@ -17,20 +17,20 @@ Superpowers determines the process of work.
 - `src/readability`: local transformations, ambiguity checks, terminal summaries, diff summaries, and technical-token protection.
 - `src/dependency`: blocking Superpowers resolver.
 - `src/hosts`: host detection and compatibility catalog.
-- `src/server`: optional MCP compatibility server and `stdio` transport wiring.
-- `src/tools`: strict optional MCP tool schemas and deterministic handlers.
-- `src/resources`: versioned optional MCP resources.
-- `src/prompts`: reusable optional MCP prompt templates.
+- `src/server`: optional stdio compatibility bridge and transport wiring.
+- `src/tools`: strict optional bridge tool schemas and deterministic handlers.
+- `src/resources`: versioned optional bridge resources.
+- `src/prompts`: reusable optional bridge prompt templates.
 
 ## Startup Gate
 
-`resolveSuperpowersDependency()` protects both plugin installation planning and optional MCP startup.
+`resolveSuperpowersDependency()` protects both plugin installation planning and optional bridge startup.
 
-For optional MCP compatibility, it runs before `server.connect(transport)`.
+For bridge compatibility, it runs before `server.connect(transport)`.
 
 If dependency validation fails:
 
-- no MCP transport is connected;
+- no bridge transport is connected;
 - no tools, prompts, or resources are published to a client;
 - the process returns a non-zero exit code;
 - the error is short and actionable;

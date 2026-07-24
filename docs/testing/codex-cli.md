@@ -18,9 +18,9 @@ Expected result:
 - Codex lists `dyslex.ia` in `/plugins` after plugin installation;
 - a new Codex chat can invoke the accessibility skills from an ambiguous prompt.
 
-## Optional MCP Configuration Safety
+## Compatibility Bridge Configuration Safety
 
-Tests must not leave MCP servers in the user's Codex config.
+Tests must not leave compatibility bridge servers in the user's Codex config.
 
 Use one of these approaches:
 

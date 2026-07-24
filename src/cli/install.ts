@@ -30,8 +30,9 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
           manifest: host.plugin.manifest,
           skillsPath: "skills"
         },
-        mcpCompatibility: {
+        compatibilityBridge: {
           optional: true,
+          protocol: "mcp",
           command: "dyslexia",
           args: ["mcp"],
           transport: "stdio",
@@ -46,7 +47,7 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
           requiresBackupBeforeUserFileEdits: true,
           idempotent: true,
           uninstallSupported: true,
-          mcpIsOptional: true
+          compatibilityBridgeIsOptional: true
         }
       },
       null,

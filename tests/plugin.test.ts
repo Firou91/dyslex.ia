@@ -29,7 +29,7 @@ test("Codex plugin manifest is plugin-first and version-aligned", async () => {
   assert.ok(manifest.interface.defaultPrompt.length > 0);
 });
 
-test("host adapters are plugin-first with optional MCP compatibility", async () => {
+test("host adapters are plugin-first with an optional compatibility bridge", async () => {
   const adaptersRoot = path.join(repoRoot, "adapters");
   const hosts = await readdir(adaptersRoot, { withFileTypes: true });
   const adapterDirs = hosts.filter((entry) => entry.isDirectory());
@@ -41,7 +41,7 @@ test("host adapters are plugin-first with optional MCP compatibility", async () 
       integrationPriority: string;
       plugin?: { mode: string; skillsPath: string };
       skills?: { path: string };
-      mcpCompatibility?: { optional: boolean };
+      compatibilityBridge?: { optional: boolean; protocol: string };
       checks?: string[];
     }>(path.join(adaptersRoot, entry.name, "adapter.json"));
 
@@ -49,7 +49,8 @@ test("host adapters are plugin-first with optional MCP compatibility", async () 
     assert.equal(adapter.integrationPriority, "plugin-first", entry.name);
     assert.equal(adapter.plugin?.skillsPath, "skills", entry.name);
     assert.equal(adapter.skills?.path, "skills", entry.name);
-    assert.equal(adapter.mcpCompatibility?.optional, true, entry.name);
+    assert.equal(adapter.compatibilityBridge?.optional, true, entry.name);
+    assert.equal(adapter.compatibilityBridge?.protocol, "mcp", entry.name);
     assert.ok(adapter.checks?.includes("plugin-install"), entry.name);
   }
 });

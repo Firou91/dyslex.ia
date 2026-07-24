@@ -10,17 +10,17 @@ Superpowers determines the work process.
 
 `dyslex.ia` adapts how that process is presented and understood.
 
-The plugin expects a compatible `obra/superpowers` installation. The optional MCP compatibility server also refuses to start unless Superpowers is found.
+The plugin expects a compatible `obra/superpowers` installation. The optional compatibility bridge also refuses to start unless Superpowers is found.
 
 ## What Is Included
 
 - Codex plugin manifest in `.codex-plugin/plugin.json`.
 - CLI: `dyslexia`.
 - 16 native Agent Skills.
-- Optional TypeScript MCP compatibility server using `stdio`.
-- 11 optional MCP tools.
-- 8 optional MCP resources.
-- 8 optional MCP prompt templates.
+- Optional stdio compatibility bridge for hosts that need protocol-level integration.
+- 11 optional bridge tools.
+- 8 optional bridge resources.
+- 8 optional bridge prompt templates.
 - Host adapter manifests for Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, GitHub Copilot CLI, Kimi Code, OpenCode, and Pi.
 - Unit tests for the core behavior.
 
@@ -60,15 +60,15 @@ dyslexia install --host cursor
 
 The installer currently emits a static, reviewable install plan. Host-specific writes remain gated behind backup and consent requirements.
 
-## Optional MCP Compatibility
+## Compatibility Bridge
 
-Run the compatibility server only for hosts or workflows that cannot consume the skills plugin directly:
+Run the bridge only for hosts or workflows that cannot consume the skills plugin directly:
 
 ```bash
 dyslexia mcp
 ```
 
-Startup is blocked before `server.connect(transport)` if Superpowers is missing or incompatible.
+The bridge uses MCP internally and is blocked before `server.connect(transport)` if Superpowers is missing or incompatible.
 
 ## Codex CLI
 
@@ -82,7 +82,7 @@ npx -y @firou91/dyslex.ia doctor --verbose
 
 For plugin-first usage, install `dyslex.ia` as a Codex plugin from the configured marketplace or local plugin source.
 
-For optional MCP compatibility from npm after publication:
+For compatibility bridge usage from npm after publication:
 
 ```bash
 codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
@@ -100,7 +100,7 @@ Inside Codex, use:
 /plugins
 ```
 
-Check optional MCP state:
+Check optional bridge state in Codex:
 
 ```bash
 codex mcp list

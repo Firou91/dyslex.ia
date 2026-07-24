@@ -7,7 +7,7 @@ Do not publish until the owner explicitly approves.
 - Confirm npm package name.
 - Confirm GitHub repository URL.
 - Confirm plugin name and marketplace namespace.
-- Confirm MCP namespace only if publishing the optional compatibility server.
+- Confirm compatibility registry namespace only if publishing the optional bridge.
 - Ensure the repository is public.
 - Ensure npm account or trusted publishing is configured.
 - Install the official `mcp-publisher` binary.
@@ -33,7 +33,7 @@ Plugin name:
 dyslex-ia
 ```
 
-Optional MCP name:
+Optional compatibility registry name:
 
 ```text
 io.github.Firou91/dyslex-ia
@@ -105,7 +105,7 @@ For Codex, publish or register the plugin through the configured plugin marketpl
 
 For other agents, use each agent's plugin marketplace or documented local plugin installation path. If no marketplace exists, ship a static adapter install plan and document the manual installation.
 
-## Optional MCP Registry Publication
+## Optional Compatibility Registry Publication
 
 Login:
 
@@ -134,9 +134,9 @@ For plugin publication:
 - `.codex-plugin/plugin.json` version must match `package.json.version`;
 - plugin `skills` must point to `./skills/`;
 - every adapter must be `plugin-first`;
-- optional MCP must be described as compatibility, not as the primary install path.
+- the optional bridge must be described as compatibility, not as the primary install path.
 
-For optional MCP registry:
+For optional compatibility registry:
 
 - GitHub namespace must match `io.github.<owner>/dyslex-ia`;
 - `package.json.mcpName` must match `server.json.name`;
@@ -152,4 +152,4 @@ If a validation fails:
 4. rebuild and repack;
 5. repeat dry-runs before publishing.
 
-Superpowers remains external and is not bundled in the npm package or MCP registry metadata.
+Superpowers remains external and is not bundled in the npm package or optional registry metadata.
