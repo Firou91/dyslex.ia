@@ -7,12 +7,12 @@
     "url": "https://github.com/Firou91/dyslex.ia",
     "source": "github"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@firou91/dyslex.ia",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
       },
