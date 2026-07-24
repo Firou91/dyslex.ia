@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
+      - name: Use npm with Trusted Publishing support
+        run: |
+          npm install -g npm@11.18.0
+          npm --version
       - uses: pnpm/action-setup@v5
         with:
           version: 11
@@ -34,7 +38,7 @@ jobs:
       - run: pnpm build
       - run: npm pack --dry-run
       - name: Publish npm package
-        run: npm publish --access public --provenance
+        run: npm publish --access public
       - name: Install MCP publisher
         run: |
           curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
