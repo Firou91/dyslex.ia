@@ -64,7 +64,7 @@ Then start a new Codex chat:
 
 Expected result:
 
-- `dyslex.ai` appears as an installed plugin.
+- `Dyslex.ai` appears as an installed plugin.
 - the 16 skills are available in the new chat.
 - a deliberately ambiguous prompt triggers the relevant skills before implementation.
 

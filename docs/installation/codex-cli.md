@@ -67,7 +67,7 @@ Then in Codex:
 
 Expected result:
 
-- `dyslex.ai` appears as an installed plugin;
+- `Dyslex.ai` appears as an installed plugin;
 - the accessibility skills are available in a new chat;
 - ambiguous prompts can trigger clarification and readability skills.
 

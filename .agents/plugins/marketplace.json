@@ -1,7 +1,7 @@
 {
   "name": "dyslexai",
   "interface": {
-    "displayName": "dyslex.ai"
+    "displayName": "Dyslex.ai"
   },
   "plugins": [
     {

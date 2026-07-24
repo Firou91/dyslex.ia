@@ -15,7 +15,7 @@ Expected result:
 
 - `.codex-plugin/plugin.json` validates;
 - `skills/` contains 16 valid skills;
-- Codex lists `dyslex.ai` in `/plugins` after plugin installation;
+- Codex lists `Dyslex.ai` in `/plugins` after plugin installation;
 - a new Codex chat can invoke the accessibility skills from an ambiguous prompt.
 
 ## Local E2E
@@ -36,7 +36,7 @@ Then start a new Codex chat and check:
 
 Expected result:
 
-- `dyslex.ai` appears as installed;
+- `Dyslex.ai` appears as installed;
 - the 16 skills are visible or callable;
 - ambiguous prompts trigger clarification before implementation.
 

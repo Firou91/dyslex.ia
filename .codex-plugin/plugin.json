@@ -1,9 +1,9 @@
 {
   "name": "dyslex-ai",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Accessibility skills plugin for AI agents. Improves readability, instruction decoding, typo tolerance, and technical context handling on top of Superpowers.",
   "author": {
-    "name": "Firou91",
+    "name": "Firou",
     "url": "https://github.com/Firou91"
   },
   "homepage": "https://github.com/Firou91/dyslex.ai#readme",
@@ -20,10 +20,10 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "dyslex.ai",
+    "displayName": "Dyslex.ai",
     "shortDescription": "Clearer agent interactions.",
-    "longDescription": "dyslex.ai packages accessibility-focused skills for AI agents. It requires Superpowers to be installed and loaded before use. The skills help agents clarify ambiguous instructions, preserve technical tokens, explain errors and diffs, and produce easier-to-read responses without claiming medical diagnosis or treatment.",
-    "developerName": "Firou91",
+    "longDescription": "Dyslex.ai packages accessibility-focused skills for AI agents. It requires Superpowers to be installed and loaded before use. The skills help agents clarify ambiguous instructions, preserve technical tokens, explain errors and diffs, and produce easier-to-read responses without claiming medical diagnosis or treatment.",
+    "developerName": "Firou",
     "category": "Productivity",
     "capabilities": [
       "Skills",
