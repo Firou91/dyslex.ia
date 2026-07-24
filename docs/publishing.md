@@ -107,6 +107,18 @@ For other agents, use each agent's plugin marketplace or documented local plugin
 
 ## Optional Compatibility Registry Publication
 
+This is not the primary plugin publication path. Keep it disabled unless the optional bridge must be registered in the compatibility registry.
+
+For tag-triggered releases, enable it only when needed with:
+
+```text
+PUBLISH_COMPATIBILITY_REGISTRY=true
+```
+
+For manual releases, use the workflow dispatch `publish-compatibility-registry` input.
+
+The release workflow waits for the npm package version to become visible before registering `server.json`.
+
 Login:
 
 ```bash
