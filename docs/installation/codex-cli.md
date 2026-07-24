@@ -43,7 +43,7 @@ Expected result:
 Package name:
 
 ```bash
-codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" -- npx -y @firou91/dyslex.ia mcp
+codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
 ```
 
 ## 4. Verify In Codex

@@ -1,6 +1,6 @@
 {
   "name": "@firou91/dyslex.ia",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Accessibility layer for AI agents, built as MCP server and Agent Skills collection on top of Superpowers.",
   "type": "module",
   "license": "Apache-2.0",

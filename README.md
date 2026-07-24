@@ -62,7 +62,7 @@ npx -y @firou91/dyslex.ia doctor --verbose
 Add `dyslex.ia` to Codex CLI from npm after publication:
 
 ```bash
-codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" -- npx -y @firou91/dyslex.ia mcp
+codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
 ```
 
 Check Codex:
