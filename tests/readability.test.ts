@@ -6,17 +6,17 @@ import { DEFAULT_PROFILES } from "../src/profiles/defaults.js";
 import { detectAmbiguities, explainDiff, summarizeTerminal } from "../src/readability/structure.js";
 
 test("rewrite preserves technical tokens by default", () => {
-  const input = "Run npm run build in ./apps/web and keep DYSLEXIA_SUPERPOWERS_PATH unchanged.";
+  const input = "Run npm run build in ./apps/web and keep DYSLEXAI_SUPERPOWERS_PATH unchanged.";
   const output = rewriteText(input, "plain-language", DEFAULT_PROFILES.balanced).text;
   assert.match(output, /npm run build/);
   assert.match(output, /\.\/apps\/web/);
-  assert.match(output, /DYSLEXIA_SUPERPOWERS_PATH/);
+  assert.match(output, /DYSLEXAI_SUPERPOWERS_PATH/);
 });
 
 test("technical token finder captures commands, paths, and env vars", () => {
-  const tokens = listTechnicalTokens("Use pnpm build, ./src/index.ts, and DYSLEXIA_HOST.");
+  const tokens = listTechnicalTokens("Use pnpm build, ./src/index.ts, and DYSLEXAI_HOST.");
   assert.ok(tokens.includes("./src/index.ts"));
-  assert.ok(tokens.includes("DYSLEXIA_HOST"));
+  assert.ok(tokens.includes("DYSLEXAI_HOST"));
 });
 
 test("ambiguity detector flags slash dates and units", () => {

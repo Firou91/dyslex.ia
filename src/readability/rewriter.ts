@@ -1,5 +1,5 @@
 import { listTechnicalTokens, protectTechnicalTokens, restoreTechnicalTokens } from "./technicalTokens.js";
-import type { DyslexiaProfile } from "../shared/types.js";
+import type { DyslexAIProfile } from "../shared/types.js";
 
 export type RewriteMode = "readable" | "concise" | "structured" | "proofread" | "professional" | "plain-language";
 
@@ -38,7 +38,7 @@ function applyLightProofread(text: string): string {
 export function rewriteText(
   text: string,
   mode: RewriteMode,
-  profile: DyslexiaProfile,
+  profile: DyslexAIProfile,
   options: { preserveTechnicalTokens?: boolean | undefined; preserveTone?: boolean | undefined; showChanges?: boolean | undefined } = {}
 ): { text: string; changes: string[]; technicalTokens: string[] } {
   const protectedText = options.preserveTechnicalTokens !== false ? protectTechnicalTokens(text) : { text, tokens: [] };

@@ -3,14 +3,14 @@ import assert from "node:assert/strict";
 import { closeMcp, connectMcp, makeFakeSuperpowers } from "./helpers.js";
 
 const uris = [
-  "dyslexia://profile/current",
-  "dyslexia://profile/schema",
-  "dyslexia://skills/catalog",
-  "dyslexia://guidelines/readability",
-  "dyslexia://guidelines/technical-tokens",
-  "dyslexia://integration/superpowers",
-  "dyslexia://compatibility/hosts",
-  "dyslexia://compatibility/superpowers"
+  "dyslexai://profile/current",
+  "dyslexai://profile/schema",
+  "dyslexai://skills/catalog",
+  "dyslexai://guidelines/readability",
+  "dyslexai://guidelines/technical-tokens",
+  "dyslexai://integration/superpowers",
+  "dyslexai://compatibility/hosts",
+  "dyslexai://compatibility/superpowers"
 ];
 
 test("MCP resources can be listed and read", async () => {

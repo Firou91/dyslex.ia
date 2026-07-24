@@ -18,7 +18,7 @@ function readPackageVersion(): string {
     }
   }
 
-  throw new Error("Unable to read dyslex.ia version from package.json.");
+  throw new Error("Unable to read dyslex.ai version from package.json.");
 }
 
 export const VERSION = readPackageVersion();

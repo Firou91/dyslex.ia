@@ -1,6 +1,6 @@
-import type { DyslexiaProfile, NamedProfile, ProfileName } from "../shared/types.js";
+import type { DyslexAIProfile, NamedProfile, ProfileName } from "../shared/types.js";
 
-export const DEFAULT_PROFILES: Record<ProfileName, DyslexiaProfile> = {
+export const DEFAULT_PROFILES: Record<ProfileName, DyslexAIProfile> = {
   minimal: {
     language: "en",
     preferredChunkSize: "large",

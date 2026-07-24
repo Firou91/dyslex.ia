@@ -15,7 +15,7 @@ function print(value: unknown): void {
 async function main(argv: string[]): Promise<void> {
   const [command, subcommand, ...rest] = argv;
   if (!command || command === "help" || command === "--help") {
-    print("Usage: dyslexia <doctor|dependency|compatibility|config|profile|install|uninstall|update|mcp>");
+    print("Usage: dyslexai <doctor|dependency|compatibility|config|profile|install|uninstall|update|mcp>");
     return;
   }
 
@@ -44,8 +44,8 @@ async function main(argv: string[]): Promise<void> {
   if (command === "config") {
     if (subcommand === "show") print(await loadConfig());
     else if (subcommand === "reset") print({ file: await saveUserConfig({ activeProfile: "balanced" }) });
-    else if (subcommand === "edit") print("Edit the user config file shown by `dyslexia config show`.");
-    else throw new Error("Expected: dyslexia config show|edit|reset");
+    else if (subcommand === "edit") print("Edit the user config file shown by `dyslexai config show`.");
+    else throw new Error("Expected: dyslexai config show|edit|reset");
     return;
   }
 
@@ -54,9 +54,9 @@ async function main(argv: string[]): Promise<void> {
     else if (subcommand === "export") print((await loadConfig()).config);
     else if (subcommand === "import") {
       const file = rest[0];
-      if (!file) throw new Error("Expected: dyslexia profile import <file>");
+      if (!file) throw new Error("Expected: dyslexai profile import <file>");
       print({ file: await saveUserConfig(JSON.parse(await readFile(file, "utf8"))) });
-    } else throw new Error("Expected: dyslexia profile set|export|import");
+    } else throw new Error("Expected: dyslexai profile set|export|import");
     return;
   }
 
@@ -72,7 +72,7 @@ async function main(argv: string[]): Promise<void> {
   }
 
   if (command === "update") {
-    print({ ok: true, dryRun: true, message: "Re-run dyslexia install --host <host> after updating the package." });
+    print({ ok: true, dryRun: true, message: "Re-run dyslexai install --host <host> after updating the package." });
     return;
   }
 
@@ -80,6 +80,6 @@ async function main(argv: string[]): Promise<void> {
 }
 
 main(process.argv.slice(2)).catch((error: unknown) => {
-  process.stderr.write(`[dyslex.ia] ${error instanceof Error ? error.message : String(error)}\n`);
+  process.stderr.write(`[dyslex.ai] ${error instanceof Error ? error.message : String(error)}\n`);
   process.exitCode = 1;
 });

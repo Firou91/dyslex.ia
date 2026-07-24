@@ -4,9 +4,9 @@
 
 Superpowers determines the process of work.
 
-`dyslex.ia` adapts the presentation of that process.
+`dyslex.ai` adapts the presentation of that process.
 
-`dyslex.ia` must not bypass Superpowers brainstorming, planning, test-driven development, debugging, code review, or verification gates.
+`dyslex.ai` must not bypass Superpowers brainstorming, planning, test-driven development, debugging, code review, or verification gates.
 
 ## Components
 

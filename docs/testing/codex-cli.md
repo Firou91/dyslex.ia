@@ -15,7 +15,7 @@ Expected result:
 
 - `.codex-plugin/plugin.json` validates;
 - `skills/` contains 16 valid skills;
-- Codex lists `dyslex.ia` in `/plugins` after plugin installation;
+- Codex lists `dyslex.ai` in `/plugins` after plugin installation;
 - a new Codex chat can invoke the accessibility skills from an ambiguous prompt.
 
 ## Compatibility Bridge Configuration Safety
@@ -30,7 +30,7 @@ Use one of these approaches:
 The test server name is:
 
 ```text
-dyslex-ia-local-test
+dyslex-ai-local-test
 ```
 
 ## Negative Test
@@ -52,7 +52,7 @@ Expected result:
 Codex required-server test:
 
 ```bash
-codex mcp add dyslex-ia-local-test -- node A:\Workspace\.agents\skills\dyslex.ia\dist\src\cli\index.js mcp
+codex mcp add dyslex-ai-local-test -- node A:\Workspace\.agents\skills\dyslex.ai\dist\src\cli\index.js mcp
 ```
 
 Then set `required = true` for the server in a backed-up config.
@@ -66,13 +66,13 @@ Expected result:
 Use an external Superpowers installation or a minimal test fixture only for automated protocol tests:
 
 ```bash
-codex mcp add dyslex-ia-local-test --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- node A:\Workspace\.agents\skills\dyslex.ia\dist\src\cli\index.js mcp
+codex mcp add dyslex-ai-local-test --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- node A:\Workspace\.agents\skills\dyslex.ai\dist\src\cli\index.js mcp
 ```
 
 Expected result:
 
 - `codex mcp list` shows the server as enabled;
-- `dyslexia doctor --verbose` reports `superpowers.ok: true`;
+- `dyslexai doctor --verbose` reports `superpowers.ok: true`;
 - MCP SDK integration tests can list tools, resources, and prompts.
 
 If Codex authentication is expired, `codex exec` can still prove whether MCP initialization failed or succeeded:
@@ -87,7 +87,7 @@ The validated end-to-end command used the corrected MCP registration above and a
 Command:
 
 ```bash
-codex exec --skip-git-repo-check -m gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox "Appelle ces tools MCP dyslex-ia-local-test dans cet ordre: dyslexia_profile_get avec {}, dyslexia_check_ambiguity avec {text:'07/08/2026 1.500 10m'}, puis dyslexia_rewrite avec {text:'fo modif le src/tools/handlers.ts avec --preserveTechnicalTokens et @modelcontextprotocol/sdk', mode:'readable', preserveTechnicalTokens:true}. Réponds en 3 lignes: profile=<nom>, ambiguity=<nombre>, tokens-preserved=<yes/no>."
+codex exec --skip-git-repo-check -m gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox "Appelle ces tools MCP dyslex-ai-local-test dans cet ordre: dyslexai_profile_get avec {}, dyslexai_check_ambiguity avec {text:'07/08/2026 1.500 10m'}, puis dyslexai_rewrite avec {text:'fo modif le src/tools/handlers.ts avec --preserveTechnicalTokens et @modelcontextprotocol/sdk', mode:'readable', preserveTechnicalTokens:true}. Réponds en 3 lignes: profile=<nom>, ambiguity=<nombre>, tokens-preserved=<yes/no>."
 ```
 
 Expected result:

@@ -6,14 +6,14 @@ test("MCP lifecycle handshakes and closes cleanly with valid Superpowers", async
   const superpowers = await makeFakeSuperpowers();
   const { client, transport } = await connectMcp(superpowers);
   const tools = await client.listTools();
-  assert.ok(tools.tools.some((tool) => tool.name === "dyslexia_rewrite"));
+  assert.ok(tools.tools.some((tool) => tool.name === "dyslexai_rewrite"));
   await closeMcp(client, transport);
 });
 
 test("MCP startup without Superpowers writes only stderr and exits with code 1", async () => {
   const child = spawnCli(["mcp"], {
-    DYSLEXIA_SUPERPOWERS_PATH: "Z:\\definitely\\missing\\superpowers",
-    DYSLEXIA_HOST: "codex-cli"
+    DYSLEXAI_SUPERPOWERS_PATH: "Z:\\definitely\\missing\\superpowers",
+    DYSLEXAI_HOST: "codex-cli"
   });
   const result = await collectProcess(child);
   assert.equal(result.code, 1);

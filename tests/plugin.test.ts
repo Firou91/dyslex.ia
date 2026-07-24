@@ -19,13 +19,13 @@ test("Codex plugin manifest is plugin-first and version-aligned", async () => {
     interface: { displayName: string; defaultPrompt: string[] };
   }>("./.codex-plugin/plugin.json");
 
-  assert.equal(manifest.name, "dyslex-ia");
+  assert.equal(manifest.name, "dyslex-ai");
   assert.equal(manifest.version, pkg.version);
   assert.equal(manifest.version, server.version);
   assert.equal(manifest.version, server.packages[0]?.version);
   assert.equal(manifest.license, pkg.license);
   assert.equal(manifest.skills, "./skills/");
-  assert.equal(manifest.interface.displayName, "dyslex.ia");
+  assert.equal(manifest.interface.displayName, "dyslex.ai");
   assert.ok(manifest.interface.defaultPrompt.length > 0);
 });
 

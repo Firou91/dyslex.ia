@@ -12,7 +12,7 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
     return {
       ok: false,
       blocked: true,
-      message: "Superpowers must be installed before dyslex.ia.",
+      message: "Superpowers must be installed before dyslex.ai.",
       superpowersInstall: host.superpowersInstall
     };
   }
@@ -33,7 +33,7 @@ export async function installHost(hostId: HostId): Promise<Record<string, unknow
         compatibilityBridge: {
           optional: true,
           protocol: "mcp",
-          command: "dyslexia",
+          command: "dyslexai",
           args: ["mcp"],
           transport: "stdio",
           note: "Use only for hosts or workflows that cannot consume the skills plugin directly."

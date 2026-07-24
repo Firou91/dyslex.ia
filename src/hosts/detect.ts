@@ -8,7 +8,7 @@ export interface HostInfo {
 }
 
 export function detectHost(env: NodeJS.ProcessEnv = process.env): HostInfo {
-  const explicit = env.DYSLEXIA_HOST as HostId | undefined;
+  const explicit = env.DYSLEXAI_HOST as HostId | undefined;
   if (explicit) return toHostInfo(explicit);
   if (env.CODEX_HOME || env.CODEX_SANDBOX || env.OPENAI_CODEX) return toHostInfo("codex-cli");
   if (env.CLAUDECODE || env.CLAUDE_CODE) return toHostInfo("claude-code");

@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.Firou91/dyslex-ia",
-  "title": "dyslex.ia",
-  "description": "Compatibility bridge for the dyslex.ia skills plugin. Requires Superpowers.",
+  "name": "io.github.Firou91/dyslex-ai",
+  "title": "dyslex.ai",
+  "description": "Compatibility bridge for the dyslex.ai skills plugin. Requires Superpowers.",
   "repository": {
-    "url": "https://github.com/Firou91/dyslex.ia",
+    "url": "https://github.com/Firou91/dyslex.ai",
     "source": "github"
   },
-  "version": "0.3.3",
+  "version": "0.3.4",
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "@firou91/dyslex.ia",
-      "version": "0.3.3",
+      "identifier": "@firou91/dyslex.ai",
+      "version": "0.3.4",
       "transport": {
         "type": "stdio"
       },
@@ -22,7 +22,7 @@
           "isRequired": true,
           "format": "string",
           "isSecret": false,
-          "name": "DYSLEXIA_SUPERPOWERS_PATH"
+          "name": "DYSLEXAI_SUPERPOWERS_PATH"
         }
       ]
     }

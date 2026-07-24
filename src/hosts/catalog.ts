@@ -16,7 +16,7 @@ export interface HostCompatibility {
   skills: "native" | "plugin" | "instructions-file" | "package" | "unknown";
   adapterPath: string;
   superpowersInstall: string;
-  dyslexiaInstall: string;
+  dyslexaiInstall: string;
 }
 
 export const HOSTS: HostCompatibility[] = [
@@ -29,7 +29,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/claude-code",
     superpowersInstall: "/plugin install superpowers@claude-plugins-official",
-    dyslexiaInstall: "dyslexia install --host claude-code"
+    dyslexaiInstall: "dyslexai install --host claude-code"
   },
   {
     id: "antigravity",
@@ -40,7 +40,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/antigravity",
     superpowersInstall: "agy plugin install https://github.com/obra/superpowers",
-    dyslexiaInstall: "dyslexia install --host antigravity"
+    dyslexaiInstall: "dyslexai install --host antigravity"
   },
   {
     id: "codex-app",
@@ -51,7 +51,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/codex-app",
     superpowersInstall: "Install Superpowers from the official Codex plugin marketplace.",
-    dyslexiaInstall: "dyslexia install --host codex-app"
+    dyslexaiInstall: "dyslexai install --host codex-app"
   },
   {
     id: "codex-cli",
@@ -62,7 +62,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/codex-cli",
     superpowersInstall: "Open /plugins, search for Superpowers, then install it.",
-    dyslexiaInstall: "dyslexia install --host codex-cli"
+    dyslexaiInstall: "dyslexai install --host codex-cli"
   },
   {
     id: "cursor",
@@ -73,7 +73,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/cursor",
     superpowersInstall: "/add-plugin superpowers",
-    dyslexiaInstall: "dyslexia install --host cursor"
+    dyslexaiInstall: "dyslexai install --host cursor"
   },
   {
     id: "factory-droid",
@@ -84,7 +84,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/factory-droid",
     superpowersInstall: "droid plugin marketplace add https://github.com/obra/superpowers && droid plugin install superpowers@superpowers",
-    dyslexiaInstall: "dyslexia install --host factory-droid"
+    dyslexaiInstall: "dyslexai install --host factory-droid"
   },
   {
     id: "copilot-cli",
@@ -95,7 +95,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/copilot-cli",
     superpowersInstall: "copilot plugin marketplace add obra/superpowers-marketplace && copilot plugin install superpowers@superpowers-marketplace",
-    dyslexiaInstall: "dyslexia install --host copilot-cli"
+    dyslexaiInstall: "dyslexai install --host copilot-cli"
   },
   {
     id: "kimi-code",
@@ -106,7 +106,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "plugin",
     adapterPath: "adapters/kimi-code",
     superpowersInstall: "/plugins install https://github.com/obra/superpowers",
-    dyslexiaInstall: "dyslexia install --host kimi-code"
+    dyslexaiInstall: "dyslexai install --host kimi-code"
   },
   {
     id: "opencode",
@@ -117,7 +117,7 @@ export const HOSTS: HostCompatibility[] = [
     skills: "instructions-file",
     adapterPath: "adapters/opencode",
     superpowersInstall: "Follow https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md",
-    dyslexiaInstall: "dyslexia install --host opencode"
+    dyslexaiInstall: "dyslexai install --host opencode"
   },
   {
     id: "pi",
@@ -128,6 +128,6 @@ export const HOSTS: HostCompatibility[] = [
     skills: "package",
     adapterPath: "adapters/pi",
     superpowersInstall: "pi install git:github.com/obra/superpowers",
-    dyslexiaInstall: "dyslexia install --host pi"
+    dyslexaiInstall: "dyslexai install --host pi"
   }
 ];

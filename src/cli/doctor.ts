@@ -20,7 +20,7 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
   const userConfig = getUserConfigPath();
   const host = detectHost();
   return {
-    dyslexiaVersion: VERSION,
+    dyslexaiVersion: VERSION,
     nodeVersion: process.version,
     host,
     plugin: {
@@ -53,7 +53,7 @@ export async function runDoctor(verbose = false): Promise<Record<string, unknown
     adapters: HOSTS.map((item) => ({
       id: item.id,
       path: item.adapterPath,
-      install: item.dyslexiaInstall,
+      install: item.dyslexaiInstall,
       integrationPriority: item.integrationPriority,
       plugin: item.plugin,
       compatibilityBridge: item.compatibilityBridge

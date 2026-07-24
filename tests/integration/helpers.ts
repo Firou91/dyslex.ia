@@ -9,7 +9,7 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 export const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 export const cliPath = path.join(repoRoot, "dist", "src", "cli", "index.js");
 
-export async function makeTempDir(prefix = "dyslexia-test-"): Promise<string> {
+export async function makeTempDir(prefix = "dyslexai-test-"): Promise<string> {
   return mkdtemp(path.join(os.tmpdir(), prefix));
 }
 
@@ -41,19 +41,19 @@ export function testEnv(extra: Record<string, string> = {}): Record<string, stri
 }
 
 export async function connectMcp(superpowersPath: string): Promise<{ client: Client; transport: StdioClientTransport }> {
-  const configRoot = await makeTempDir("dyslexia-config-");
+  const configRoot = await makeTempDir("dyslexai-config-");
   const transport = new StdioClientTransport({
     command: process.execPath,
     args: [cliPath, "mcp"],
     env: testEnv({
-      DYSLEXIA_SUPERPOWERS_PATH: superpowersPath,
-      DYSLEXIA_HOST: "codex-cli",
+      DYSLEXAI_SUPERPOWERS_PATH: superpowersPath,
+      DYSLEXAI_HOST: "codex-cli",
       APPDATA: configRoot,
       XDG_CONFIG_HOME: configRoot
     }),
     stderr: "pipe"
   });
-  const client = new Client({ name: "dyslexia-integration-test", version: "0.0.0" }, { capabilities: {} });
+  const client = new Client({ name: "dyslexai-integration-test", version: "0.0.0" }, { capabilities: {} });
   await client.connect(transport);
   return { client, transport };
 }

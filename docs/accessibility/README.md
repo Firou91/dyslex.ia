@@ -1,6 +1,6 @@
 # Accessibility Guidance
 
-`dyslex.ia` follows these principles:
+`dyslex.ai` follows these principles:
 
 - preserve meaning and technical detail;
 - use short paragraphs;

@@ -59,7 +59,7 @@ export const PROMPTS: PromptDefinition[] = [
   {
     name: "accessible_superpowers_plan",
     title: "Accessible Superpowers Plan",
-    description: "Present a Superpowers plan with the dyslex.ia task format.",
+    description: "Present a Superpowers plan with the dyslex.ai task format.",
     arguments: [{ name: "plan", description: "Superpowers plan", required: true }],
     template: "Present this Superpowers plan accessibly without changing gates or intent. Use task blocks with But, Fichiers, Action, Pourquoi, Verification, and Resultat attendu:\n\n{{plan}}"
   }

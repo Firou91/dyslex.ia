@@ -31,7 +31,7 @@ test("incompatible Superpowers version is rejected", async () => {
 
 test("dependency resolver blocks when explicit path is invalid", async () => {
   const result = await resolveSuperpowersDependency({
-    env: { DYSLEXIA_SUPERPOWERS_PATH: path.join(os.tmpdir(), "missing-superpowers"), DYSLEXIA_HOST: "codex-cli" }
+    env: { DYSLEXAI_SUPERPOWERS_PATH: path.join(os.tmpdir(), "missing-superpowers"), DYSLEXAI_HOST: "codex-cli" }
   });
   assert.equal(result.ok, false);
   if (!result.ok) {

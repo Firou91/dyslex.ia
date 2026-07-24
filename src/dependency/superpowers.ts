@@ -71,11 +71,11 @@ async function expandCacheRoots(root: string): Promise<string[]> {
 
 export async function candidateSuperpowersPaths(cwd = process.cwd(), env: NodeJS.ProcessEnv = process.env): Promise<Array<{ path: string; source: string }>> {
   const { config } = await loadConfig(cwd);
-  const explicit = env.DYSLEXIA_SUPERPOWERS_PATH;
+  const explicit = env.DYSLEXAI_SUPERPOWERS_PATH;
   const codexHome = env.CODEX_HOME ?? home(".codex");
   const roots = [
-    { path: explicit, source: "DYSLEXIA_SUPERPOWERS_PATH" },
-    { path: config.superpowersPath, source: "dyslex.ia config" },
+    { path: explicit, source: "DYSLEXAI_SUPERPOWERS_PATH" },
+    { path: config.superpowersPath, source: "dyslex.ai config" },
     { path: path.join(codexHome, "plugins", "cache"), source: "Codex plugin cache" },
     { path: path.join(codexHome, "superpowers"), source: "Codex legacy source cache" },
     { path: home(".claude", "plugins", "cache"), source: "Claude plugin cache" },
@@ -140,16 +140,16 @@ export function formatStartupBlocked(result: SuperpowersDependencyFailure): stri
   const hostDoc = HOSTS.find((host) => host.id === result.host.id);
   const resolution = hostDoc?.superpowersInstall ?? "Install Superpowers for the active host, then restart the agent.";
   return [
-    "[dyslex.ia] Startup blocked: Superpowers was not found.",
+    "[dyslex.ai] Startup blocked: Superpowers was not found.",
     "",
-    "dyslex.ia extends Superpowers and cannot run independently.",
+    "dyslex.ai extends Superpowers and cannot run independently.",
     "",
     `Detected host: ${result.host.label}`,
     "Expected dependency: obra/superpowers",
     "Resolution:",
     `  1. ${resolution}`,
     "  2. Restart the agent.",
-    "  3. Run: dyslexia doctor",
+    "  3. Run: dyslexai doctor",
     "",
     "Documentation: docs/installation/README.md"
   ].join("\n");

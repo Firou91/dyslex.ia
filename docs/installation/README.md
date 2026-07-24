@@ -2,9 +2,9 @@
 
 ## Prerequisite
 
-Install Superpowers for each host before installing the `dyslex.ia` skills plugin.
+Install Superpowers for each host before installing the `dyslex.ai` skills plugin.
 
-`dyslex.ia` extends Superpowers and cannot run independently.
+`dyslex.ai` extends Superpowers and cannot run independently.
 
 ## Build From Source
 
@@ -17,9 +17,9 @@ pnpm test
 ## Install For A Host
 
 ```bash
-dyslexia install --host codex-cli
-dyslexia install --host claude-code
-dyslexia install --host cursor
+dyslexai install --host codex-cli
+dyslexai install --host claude-code
+dyslexai install --host cursor
 ```
 
 The installer currently writes a host adapter install plan to `adapters/<host>/install-plan.json`.
@@ -28,7 +28,7 @@ The install plan is plugin-first:
 
 - install or expose `.codex-plugin/plugin.json`;
 - expose the `skills/` catalog;
-- keep `dyslexia mcp` only as an optional compatibility bridge;
+- keep `dyslexai mcp` only as an optional compatibility bridge;
 - do not mutate user files without backup and consent.
 
 Before modifying user files, a full installer must:
@@ -45,13 +45,13 @@ Before modifying user files, a full installer must:
 Use the bridge only when a host cannot consume the plugin or skills directly:
 
 ```bash
-dyslexia mcp
+dyslexai mcp
 ```
 
 For Codex CLI:
 
 ```bash
-codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
+codex mcp add dyslex-ai --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- npx -y @firou91/dyslex.ai mcp
 ```
 
 ## Superpowers Install Commands

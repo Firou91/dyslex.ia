@@ -2,7 +2,7 @@
 
 ## Supported Hosts
 
-The host catalog lives in `src/hosts/catalog.ts` and is exposed as `dyslexia://compatibility/hosts`.
+The host catalog lives in `src/hosts/catalog.ts` and is exposed as `dyslexai://compatibility/hosts`.
 
 Supported targets:
 
@@ -35,8 +35,8 @@ Adapters describe:
 Run:
 
 ```bash
-dyslexia compatibility
-dyslexia doctor --verbose
+dyslexai compatibility
+dyslexai doctor --verbose
 ```
 
 Current adapter manifests are testable as static installation plans. Host-specific mutation of user config is intentionally deferred behind backup and consent requirements.

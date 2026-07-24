@@ -1,6 +1,6 @@
 {
-  "name": "@firou91/dyslex.ia",
-  "version": "0.3.3",
+  "name": "@firou91/dyslex.ai",
+  "version": "0.3.4",
   "description": "Accessibility skills plugin for AI agents, with an optional stdio compatibility bridge on top of Superpowers.",
   "type": "module",
   "license": "Apache-2.0",
@@ -11,8 +11,8 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "dyslexia": "dist/src/cli/index.js",
-    "dyslex.ia": "dist/src/cli/index.js"
+    "dyslexai": "dist/src/cli/index.js",
+    "dyslex.ai": "dist/src/cli/index.js"
   },
   "files": [
     ".codex-plugin",
@@ -28,6 +28,7 @@
   "keywords": [
     "accessibility",
     "dyslexia",
+    "dyslexai",
     "plugin",
     "agent-skills",
     "superpowers",
@@ -36,16 +37,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Firou91/dyslex.ia.git"
+    "url": "git+https://github.com/Firou91/dyslex.ai.git"
   },
-  "homepage": "https://github.com/Firou91/dyslex.ia#readme",
+  "homepage": "https://github.com/Firou91/dyslex.ai#readme",
   "bugs": {
-    "url": "https://github.com/Firou91/dyslex.ia/issues"
+    "url": "https://github.com/Firou91/dyslex.ai/issues"
   },
   "publishConfig": {
     "access": "public"
   },
-  "mcpName": "io.github.Firou91/dyslex-ia",
+  "mcpName": "io.github.Firou91/dyslex-ai",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",

@@ -8,7 +8,7 @@ const skillsDir = path.join(root, "skills");
 const namePattern = /^[a-z0-9-]{1,64}$/;
 
 function fail(message) {
-  console.error(`[dyslex.ia] skills validation failed: ${message}`);
+  console.error(`[dyslex.ai] skills validation failed: ${message}`);
   process.exitCode = 1;
 }
 
@@ -46,6 +46,10 @@ for (const entry of entries.sort()) {
   const fields = parseFrontmatter(text, `${entry}/SKILL.md`);
   if (fields.name !== entry) fail(`${entry}/SKILL.md name '${fields.name}' does not match folder`);
   if (!fields.description || fields.description.length < 40) fail(`${entry}/SKILL.md description is missing or too short`);
+  if (!text.includes("## Superpowers Gate")) fail(`${entry}/SKILL.md must include the Superpowers Gate`);
+  if (!text.includes("dyslex.ai requires Superpowers before it can run")) {
+    fail(`${entry}/SKILL.md must tell users to install Superpowers when the gate fails`);
+  }
   const uiFile = path.join(dir, "agents", "openai.yaml");
   const ui = await readFile(uiFile, "utf8").catch((error) => {
     fail(`${entry}/agents/openai.yaml cannot be read: ${error.message}`);
@@ -57,4 +61,4 @@ for (const entry of entries.sort()) {
 if (count !== 16) fail(`expected 16 skills, found ${count}`);
 
 if (process.exitCode) process.exit(process.exitCode);
-console.log(`[dyslex.ia] validated ${count} skills`);
+console.log(`[dyslex.ai] validated ${count} skills`);

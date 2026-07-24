@@ -1,6 +1,6 @@
 # Plugin E2E Publication
 
-This checklist covers the plugin-first publication path for `dyslex.ia`.
+This checklist covers the plugin-first publication path for `dyslex.ai`.
 
 Do not run publication commands until the owner explicitly approves.
 
@@ -14,7 +14,7 @@ Primary artifact:
 
 Compatibility artifact:
 
-- `dyslexia mcp`
+- `dyslexai mcp`
 - `server.json`
 
 The bridge path is optional and must not be the only published integration.
@@ -61,7 +61,7 @@ Use a disposable project and a disposable plugin marketplace.
 
 ```bash
 codex plugin marketplace add <path-to-local-marketplace-root>
-codex plugin add dyslex-ia@<marketplace-name>
+codex plugin add dyslex-ai@<marketplace-name>
 codex plugin list
 ```
 
@@ -73,7 +73,7 @@ Then start a new Codex chat:
 
 Expected result:
 
-- `dyslex.ia` appears as an installed plugin.
+- `dyslex.ai` appears as an installed plugin.
 - the 16 skills are available in the new chat.
 - a deliberately ambiguous prompt triggers the relevant skills before implementation.
 
@@ -82,7 +82,7 @@ Expected result:
 Only for compatibility:
 
 ```bash
-codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXIA_HOST=codex-cli -- npx -y @firou91/dyslex.ia mcp
+codex mcp add dyslex-ai --env DYSLEXAI_SUPERPOWERS_PATH="C:\path\to\superpowers" --env DYSLEXAI_HOST=codex-cli -- npx -y @firou91/dyslex.ai mcp
 codex mcp list
 ```
 
@@ -95,7 +95,7 @@ Expected result:
 Remove the server after the test:
 
 ```bash
-codex mcp remove dyslex-ia
+codex mcp remove dyslex-ai
 ```
 
 ## 5. Host Adapter E2E Matrix
@@ -103,16 +103,16 @@ codex mcp remove dyslex-ia
 Run the install plan generator for every supported host:
 
 ```bash
-dyslexia install --host claude-code
-dyslexia install --host antigravity
-dyslexia install --host codex-app
-dyslexia install --host codex-cli
-dyslexia install --host cursor
-dyslexia install --host factory-droid
-dyslexia install --host copilot-cli
-dyslexia install --host kimi-code
-dyslexia install --host opencode
-dyslexia install --host pi
+dyslexai install --host claude-code
+dyslexai install --host antigravity
+dyslexai install --host codex-app
+dyslexai install --host codex-cli
+dyslexai install --host cursor
+dyslexai install --host factory-droid
+dyslexai install --host copilot-cli
+dyslexai install --host kimi-code
+dyslexai install --host opencode
+dyslexai install --host pi
 ```
 
 For each host, verify:
@@ -137,7 +137,7 @@ GitHub Actions publishes with trusted publishing and provenance.
 After release:
 
 ```bash
-npm view @firou91/dyslex.ia version
+npm view @firou91/dyslex.ai version
 npm audit signatures
 ```
 
@@ -151,7 +151,7 @@ For a local or team Codex marketplace:
 
 ```bash
 codex plugin marketplace add <marketplace-root>
-codex plugin add dyslex-ia@<marketplace-name>
+codex plugin add dyslex-ai@<marketplace-name>
 ```
 
 For other agents, use the host-specific marketplace or plugin channel documented by that agent. If an agent has no public marketplace, publish installation instructions and keep the adapter as a static install plan until the channel exists.
@@ -161,9 +161,9 @@ For other agents, use the host-specific marketplace or plugin channel documented
 From a clean project:
 
 ```bash
-npm install @firou91/dyslex.ia
-npx dyslexia doctor --verbose
-npx dyslexia compatibility
+npm install @firou91/dyslex.ai
+npx dyslexai doctor --verbose
+npx dyslexai compatibility
 ```
 
 Then verify each target agent:

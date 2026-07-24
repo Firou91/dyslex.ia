@@ -18,25 +18,25 @@ Do not publish until the owner explicitly approves.
 Package name:
 
 ```text
-@firou91/dyslex.ia
+@firou91/dyslex.ai
 ```
 
-Unscoped package rejected by npm as too similar to `dyslexia`; publish under the user scope instead:
+Publish under the user scope:
 
 ```text
-@firou91/dyslex.ia
+@firou91/dyslex.ai
 ```
 
 Plugin name:
 
 ```text
-dyslex-ia
+dyslex-ai
 ```
 
 Optional compatibility registry name:
 
 ```text
-io.github.Firou91/dyslex-ia
+io.github.Firou91/dyslex-ai
 ```
 
 ## Validation
@@ -150,7 +150,7 @@ For plugin publication:
 
 For optional compatibility registry:
 
-- GitHub namespace must match `io.github.<owner>/dyslex-ia`;
+- GitHub namespace must match `io.github.<owner>/dyslex-ai`;
 - `package.json.mcpName` must match `server.json.name`;
 - `server.json.version` and `packages[0].version` must match `package.json.version`.
 

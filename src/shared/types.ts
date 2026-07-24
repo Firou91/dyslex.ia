@@ -1,6 +1,6 @@
 export type ProfileName = "minimal" | "balanced" | "guided" | "custom";
 
-export interface DyslexiaProfile {
+export interface DyslexAIProfile {
   language: string;
   maxSentenceLength?: number | undefined;
   preferredChunkSize?: "small" | "medium" | "large" | undefined;
@@ -17,7 +17,7 @@ export interface DyslexiaProfile {
 
 export interface NamedProfile {
   name: ProfileName;
-  profile: DyslexiaProfile;
+  profile: DyslexAIProfile;
   origin: "default" | "user" | "project" | "call";
 }
 

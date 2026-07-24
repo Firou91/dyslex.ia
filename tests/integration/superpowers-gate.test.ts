@@ -42,8 +42,8 @@ test("accepts symlink or junction to valid Superpowers", async (t) => {
 test("explicit valid path wins dependency resolution", async () => {
   const root = await makeFakeSuperpowers("6.1.1");
   const result = await resolveSuperpowersDependency({
-    env: { DYSLEXIA_SUPERPOWERS_PATH: root, DYSLEXIA_HOST: "codex-cli" }
+    env: { DYSLEXAI_SUPERPOWERS_PATH: root, DYSLEXAI_HOST: "codex-cli" }
   });
   assert.equal(result.ok, true);
-  if (result.ok) assert.equal(result.source, "DYSLEXIA_SUPERPOWERS_PATH");
+  if (result.ok) assert.equal(result.source, "DYSLEXAI_SUPERPOWERS_PATH");
 });

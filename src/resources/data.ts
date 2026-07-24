@@ -33,34 +33,34 @@ const skillNames = [
 
 export const RESOURCES: ResourceDefinition[] = [
   {
-    uri: "dyslexia://profile/current",
+    uri: "dyslexai://profile/current",
     name: "current-profile",
     title: "Current Accessibility Profile",
-    description: "Default profile catalog for dyslex.ia.",
+    description: "Default profile catalog for dyslex.ai.",
     mimeType: "application/json",
     text: JSON.stringify({ version: VERSION, default: "balanced", profiles: DEFAULT_PROFILES }, null, 2)
   },
   {
-    uri: "dyslexia://profile/schema",
+    uri: "dyslexai://profile/schema",
     name: "profile-schema",
     title: "Profile Schema",
-    description: "Versioned shape of DyslexiaProfile.",
+    description: "Versioned shape of DyslexAIProfile.",
     mimeType: "application/json",
     text: JSON.stringify({ version: "1", fields: Object.keys(DEFAULT_PROFILES.custom) }, null, 2)
   },
   {
-    uri: "dyslexia://skills/catalog",
+    uri: "dyslexai://skills/catalog",
     name: "skills-catalog",
     title: "Skills Catalog",
-    description: "Initial native Agent Skills included with dyslex.ia.",
+    description: "Initial native Agent Skills included with dyslex.ai.",
     mimeType: "application/json",
     text: JSON.stringify({ version: "1", skills: skillNames }, null, 2)
   },
   {
-    uri: "dyslexia://guidelines/readability",
+    uri: "dyslexai://guidelines/readability",
     name: "readability-guidelines",
     title: "Readability Guidelines",
-    description: "Internal readability rules used by dyslex.ia.",
+    description: "Internal readability rules used by dyslex.ai.",
     mimeType: "text/markdown",
     text: [
       "# Readability guidelines v1",
@@ -74,7 +74,7 @@ export const RESOURCES: ResourceDefinition[] = [
     ].join("\n")
   },
   {
-    uri: "dyslexia://guidelines/technical-tokens",
+    uri: "dyslexai://guidelines/technical-tokens",
     name: "technical-token-guidelines",
     title: "Technical Token Protection",
     description: "Technical tokens that must not be silently corrected.",
@@ -82,15 +82,15 @@ export const RESOURCES: ResourceDefinition[] = [
     text: "# Technical tokens v1\n\nProtect paths, URLs, commands, flags, package names, variables, classes, JSON keys, hashes, regexes, branch names, and environment variables."
   },
   {
-    uri: "dyslexia://integration/superpowers",
+    uri: "dyslexai://integration/superpowers",
     name: "superpowers-integration",
     title: "Superpowers Integration",
-    description: "Relationship between Superpowers and dyslex.ia.",
+    description: "Relationship between Superpowers and dyslex.ai.",
     mimeType: "text/markdown",
-    text: "# Superpowers integration v1\n\nSuperpowers determines the work process. dyslex.ia adapts how that process is presented and understood. dyslex.ia must not replace Superpowers hard gates."
+    text: "# Superpowers integration v1\n\nSuperpowers determines the work process. dyslex.ai adapts how that process is presented and understood. dyslex.ai must not replace Superpowers hard gates."
   },
   {
-    uri: "dyslexia://compatibility/hosts",
+    uri: "dyslexai://compatibility/hosts",
     name: "host-compatibility",
     title: "Host Compatibility",
     description: "Supported hosts and adapter strategy.",
@@ -98,7 +98,7 @@ export const RESOURCES: ResourceDefinition[] = [
     text: JSON.stringify({ version: "1", hosts: HOSTS }, null, 2)
   },
   {
-    uri: "dyslexia://compatibility/superpowers",
+    uri: "dyslexai://compatibility/superpowers",
     name: "superpowers-compatibility",
     title: "Superpowers Compatibility",
     description: "Supported Superpowers version range and startup behavior.",

@@ -1,11 +1,11 @@
 {
-  "name": "dyslexia",
+  "name": "dyslexai",
   "interface": {
-    "displayName": "dyslex.ia"
+    "displayName": "dyslex.ai"
   },
   "plugins": [
     {
-      "name": "dyslex-ia",
+      "name": "dyslex-ai",
       "source": {
         "source": "local",
         "path": "./"

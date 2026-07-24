@@ -37,7 +37,7 @@ if (manifest) {
   requireString(manifest, "name", ".codex-plugin/plugin.json");
   requireString(manifest, "version", ".codex-plugin/plugin.json");
   requireString(manifest, "description", ".codex-plugin/plugin.json");
-  assert(manifest.name === "dyslex-ia", "plugin name must be dyslex-ia");
+  assert(manifest.name === "dyslex-ai", "plugin name must be dyslex-ai");
   assert(manifest.version === pkg?.version, "plugin version must match package.json version");
   assert(manifest.skills === "./skills/", "plugin skills path must be ./skills/");
   assert(manifest.license === "Apache-2.0", "plugin license must be Apache-2.0");
@@ -92,9 +92,9 @@ if (!existsSync(adaptersRoot)) {
 }
 
 if (errors.length > 0) {
-  console.error("[dyslex.ia] plugin validation failed");
+  console.error("[dyslex.ai] plugin validation failed");
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
 
-console.log("[dyslex.ia] plugin manifest and adapters validated");
+console.log("[dyslex.ai] plugin manifest and adapters validated");

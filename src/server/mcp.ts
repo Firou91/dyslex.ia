@@ -3,7 +3,7 @@ import { PROMPTS, renderPrompt } from "../prompts/data.js";
 import { getResource, RESOURCES } from "../resources/data.js";
 import { VERSION } from "../shared/version.js";
 import { TOOL_DEFINITIONS } from "../tools/definitions.js";
-import { callDyslexiaTool } from "../tools/handlers.js";
+import { callDyslexAITool } from "../tools/handlers.js";
 
 const JSONRPC_VERSION = "2.0";
 const MCP_PROTOCOL_VERSION = "2024-11-05";
@@ -74,7 +74,7 @@ export function createMcpServer(): McpServer {
               resources: { listChanged: false },
               prompts: { listChanged: false }
             },
-            serverInfo: { name: "dyslex.ia", version: VERSION }
+            serverInfo: { name: "dyslex.ai", version: VERSION }
           };
         case "ping":
           return {};
@@ -83,7 +83,7 @@ export function createMcpServer(): McpServer {
         case "tools/call": {
           const params = paramsObject(request.params);
           if (typeof params.name !== "string") throw new Error("Expected tool name.");
-          return callDyslexiaTool(params.name, params.arguments ?? {});
+          return callDyslexAITool(params.name, params.arguments ?? {});
         }
         case "resources/list":
           return {
@@ -161,7 +161,7 @@ async function runStdio(server: McpServer): Promise<void> {
         const lengthLine = header.split("\r\n").find((line) => /^content-length:/i.test(line));
         const length = lengthLine ? Number.parseInt(lengthLine.split(":")[1]?.trim() ?? "", 10) : NaN;
         if (!Number.isFinite(length)) {
-          process.stderr.write("[dyslex.ia] Invalid MCP frame: missing Content-Length.\n");
+          process.stderr.write("[dyslex.ai] Invalid MCP frame: missing Content-Length.\n");
           process.exitCode = 1;
           return;
         }

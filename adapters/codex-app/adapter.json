@@ -30,7 +30,7 @@
     "optional": true,
     "protocol": "mcp",
     "transport": "stdio",
-    "command": "dyslexia",
+    "command": "dyslexai",
     "args": [
       "mcp"
     ],

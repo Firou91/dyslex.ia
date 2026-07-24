@@ -51,16 +51,16 @@ function explain(text: string, kind: string): Record<string, unknown> {
   };
 }
 
-export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<ToolCallResult> {
+export async function callDyslexAITool(name: string, rawArgs: unknown): Promise<ToolCallResult> {
   try {
     switch (name) {
-      case "dyslexia_profile_get": {
+      case "dyslexai_profile_get": {
         assertNoArgs(rawArgs, name);
         const profile = await resolveProfile();
         const config = await loadConfig();
         return result({ ok: true, profile, configSources: config.sources });
       }
-      case "dyslexia_profile_update": {
+      case "dyslexai_profile_update": {
         const args = profileUpdateSchema.parse(rawArgs ?? {});
         const current = (await loadConfig()).config;
         const next = configSchema.parse({
@@ -71,7 +71,7 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
         const file = await saveUserConfig(next);
         return result({ ok: true, file, config: next }, "Profile updated.");
       }
-      case "dyslexia_rewrite": {
+      case "dyslexai_rewrite": {
         const args = rewriteInputSchema.parse(rawArgs);
         assertSize("text", args.text);
         const active = await resolveProfile(args.language ? { language: args.language } : undefined);
@@ -82,38 +82,38 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
         });
         return result({ ok: true, profile: active.name, ...rewritten, diff: args.showChanges ? compareTexts(args.text, rewritten.text) : undefined });
       }
-      case "dyslexia_explain": {
+      case "dyslexai_explain": {
         const args = explainInputSchema.parse(rawArgs);
         assertSize("text", args.text);
         return result({ ok: true, explanation: explain(args.text, args.kind) });
       }
-      case "dyslexia_structure_instructions": {
+      case "dyslexai_structure_instructions": {
         const args = textInputSchema.parse(rawArgs);
         assertSize("text", args.text);
         return result({ ok: true, structure: structureInstructions(args.text) });
       }
-      case "dyslexia_summarize_terminal": {
+      case "dyslexai_summarize_terminal": {
         const args = textInputSchema.parse(rawArgs);
         assertSize("text", args.text, TEXT_LIMITS.terminalMaxChars);
         return result({ ok: true, summary: summarizeTerminal(args.text) });
       }
-      case "dyslexia_explain_diff": {
+      case "dyslexai_explain_diff": {
         const args = textInputSchema.parse(rawArgs);
         assertSize("text", args.text, TEXT_LIMITS.diffMaxChars);
         return result({ ok: true, diff: explainDiff(args.text) });
       }
-      case "dyslexia_check_ambiguity": {
+      case "dyslexai_check_ambiguity": {
         const args = textInputSchema.parse(rawArgs);
         assertSize("text", args.text);
         return result({ ok: true, ambiguities: detectAmbiguities(args.text) });
       }
-      case "dyslexia_compare_versions": {
+      case "dyslexai_compare_versions": {
         const args = compareInputSchema.parse(rawArgs);
         assertSize("original", args.original);
         assertSize("revised", args.revised);
         return result({ ok: true, diff: compareTexts(args.original, args.revised) });
       }
-      case "dyslexia_resume_context": {
+      case "dyslexai_resume_context": {
         const args = textInputSchema.parse(rawArgs);
         assertSize("text", args.text);
         return result({
@@ -128,7 +128,7 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
           }
         });
       }
-      case "dyslexia_doctor": {
+      case "dyslexai_doctor": {
         assertNoArgs(rawArgs, name);
         const dependency = await resolveSuperpowersDependency();
         return result({
@@ -146,7 +146,7 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
         });
       }
       default:
-        return userError(`Unknown dyslex.ia tool '${name}'.`);
+        return userError(`Unknown dyslex.ai tool '${name}'.`);
     }
   } catch (error) {
     return userError(error instanceof Error ? error.message : inspect(error));
