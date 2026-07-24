@@ -2,3 +2,4 @@ node_modules/
 dist/
 .dyslex.ia/
 *.log
+*.tgz

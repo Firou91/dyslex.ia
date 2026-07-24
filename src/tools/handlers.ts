@@ -33,6 +33,12 @@ function userError(message: string): ToolCallResult {
   };
 }
 
+function assertNoArgs(rawArgs: unknown, toolName: string): void {
+  if (rawArgs && typeof rawArgs === "object" && Object.keys(rawArgs as Record<string, unknown>).length > 0) {
+    throw new Error(`${toolName} does not accept input arguments.`);
+  }
+}
+
 function explain(text: string, kind: string): Record<string, unknown> {
   const original = kind === "error" ? text : undefined;
   return {
@@ -49,6 +55,7 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
   try {
     switch (name) {
       case "dyslexia_profile_get": {
+        assertNoArgs(rawArgs, name);
         const profile = await resolveProfile();
         const config = await loadConfig();
         return result({ ok: true, profile, configSources: config.sources });
@@ -122,6 +129,7 @@ export async function callDyslexiaTool(name: string, rawArgs: unknown): Promise<
         });
       }
       case "dyslexia_doctor": {
+        assertNoArgs(rawArgs, name);
         const dependency = await resolveSuperpowersDependency();
         return result({
           ok: dependency.ok,

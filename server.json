@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Firou91/dyslex-ia",
+  "title": "dyslex.ia",
+  "description": "Accessibility MCP server and Agent Skills for AI agents. Requires Superpowers.",
+  "repository": {
+    "url": "https://github.com/Firou91/dyslex.ia",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "dyslex.ia",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Absolute path to an existing compatible obra/superpowers installation.",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": false,
+          "name": "DYSLEXIA_SUPERPOWERS_PATH"
+        }
+      ]
+    }
+  ]
+}
