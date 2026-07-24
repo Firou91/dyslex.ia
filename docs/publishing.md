@@ -17,13 +17,13 @@ Do not publish until the owner explicitly approves.
 Package name:
 
 ```text
-dyslex.ia
+@firou91/dyslex.ia
 ```
 
-Scoped package checked but not selected because scope ownership is not confirmed:
+Unscoped package rejected by npm as too similar to `dyslexia`; publish under the user scope instead:
 
 ```text
-@dyslex-ia/mcp
+@firou91/dyslex.ia
 ```
 
 MCP name:

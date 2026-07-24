@@ -23,13 +23,13 @@ If you use a local checkout for testing, keep it outside the `dyslex.ia` source 
 ## 2. Verify Superpowers
 
 ```bash
-npx -y dyslex.ia doctor --verbose
+npx -y @firou91/dyslex.ia doctor --verbose
 ```
 
 With an explicit path:
 
 ```bash
-DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" npx -y dyslex.ia doctor --verbose
+DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" npx -y @firou91/dyslex.ia doctor --verbose
 ```
 
 Expected result:
@@ -43,7 +43,7 @@ Expected result:
 Package name:
 
 ```bash
-codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" -- npx -y dyslex.ia mcp
+codex mcp add dyslex-ia --env DYSLEXIA_SUPERPOWERS_PATH="C:\path\to\superpowers" -- npx -y @firou91/dyslex.ia mcp
 ```
 
 ## 4. Verify In Codex
@@ -69,13 +69,13 @@ Expected result:
 Check the dependency:
 
 ```bash
-npx -y dyslex.ia dependency status
+npx -y @firou91/dyslex.ia dependency status
 ```
 
 Check diagnostics:
 
 ```bash
-npx -y dyslex.ia doctor --verbose
+npx -y @firou91/dyslex.ia doctor --verbose
 ```
 
 Common failures:
